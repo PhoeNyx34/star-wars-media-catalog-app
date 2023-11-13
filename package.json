@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace star-wars-media-catalog-app-client build",
+    "dev": "yarn workspace star-wars-media-catalog-app-server dev",
+    "dev:debug": "yarn workspace star-wars-media-catalog-app-server dev:debug",
+    "heroku-postbuild": "yarn workspace star-wars-media-catalog-app-client build",
+    "start": "yarn workspace star-wars-media-catalog-app-server start",
+    "dev:cypress": "yarn workspace star-wars-media-catalog-app-server dev:e2e",
+    "e2e:open": "yarn workspace star-wars-media-catalog-app-e2e e2e:open",
+    "e2e:run": "yarn workspace star-wars-media-catalog-app-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^16.18"
+  }
+}
