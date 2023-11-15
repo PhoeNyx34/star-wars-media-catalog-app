@@ -1,7 +1,7 @@
 import got from "got"
 
 class SwapiAPI {
-    static async get() {
+    static async getFilms() {
         try {
             const apiResponse = await got("https://swapi.dev/api/films").json()
             return apiResponse

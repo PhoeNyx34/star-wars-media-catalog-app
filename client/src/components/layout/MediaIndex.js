@@ -34,10 +34,12 @@ const MediaIndex = (props) => {
     return (
         <>
             <div id="home-header">
-                <h1>Star Wars</h1>
-                <h3>an interactive media catalog</h3>
+                <div className="header-text">
+                    <h1>Star Wars</h1>
+                    <h3>an interactive media catalog</h3>
+                </div>
             </div>
-            <div id="home-media-index">
+            <div id="home-media-index" className="grid-x grid-margin-x">
                 {filmTiles}
             </div>
         </>

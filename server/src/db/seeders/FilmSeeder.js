@@ -5,13 +5,13 @@ import SeederSerializer from "../../serializers/SeederSerializer.js"
 
 class FilmSeeder {
     static async seed() {
-        const response = await SwapiAPI.get()
+        const response = await SwapiAPI.getFilms()
         const swapiData = response.results
         const serializedFilms = SwapiAPI.serialize(swapiData, ["title", "release_date"])
         const filmsToSeed = await Promise.all(serializedFilms.map(async (film) => {
             const coverImage = await SeederSerializer.getPosters(film)
 
-            let filmWithRequiredData = {
+            const filmWithRequiredData = {
                 ...film,
                 cover_image: coverImage,
                 canon: true,
