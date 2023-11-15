@@ -12,3 +12,57 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
+
+body {
+  background-color: #E3F1FB;
+}
+
+.top-bar {
+  background-color: #193665;
+
+  ul {
+    background-color: #193665;
+    color: #F9FEFA;
+  }
+}
+
+#home-header {
+  background-image: url("./images/index-page-hero-banner_1600x700.jpg");
+  background-color: #193665;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  height: 700px;
+}
+
+.header-text {
+  padding-top: 150px;
+  padding-left: 200px;
+  color: #F9FEFA;
+}
+
+h1 {
+  font-variant: small-caps; 
+}
+
+#home-media-index {
+  margin: 0px 100px;
+}
+
+.media-tile {
+  margin: 20px;
+  background-color: #ffffff;
+  border: 2px solid #193665;
+  box-shadow: 10px 8px 5px #193665;
+}
+
+.media-tile-cover {
+  margin: auto;
+}
+
+.media-tile-title {
+  color: #193665;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  padding-top: 15px;
+}
