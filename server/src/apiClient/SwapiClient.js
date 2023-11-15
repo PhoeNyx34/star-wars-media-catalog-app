@@ -1,22 +1,16 @@
 import got from "got"
-import dotenv from "dotenv"
-dotenv.config()
 
-class API {
-    constructor(url) {
-        this.url = url
-    }
-    
-    async get() {
+class SwapiAPI {
+    static async get() {
         try {
-            const apiResponse = await got(this.url).json()
+            const apiResponse = await got("https://swapi.dev/api/films").json()
             return apiResponse
         } catch(error) {
             return { error: error.message }
         }
     }
 
-    serialize(array, attributes) {
+    static serialize(array, attributes) {
         const serializedData = array.map(item => {
             const allowedAttributes = attributes
             let serializedItem = {}
@@ -31,4 +25,4 @@ class API {
     }
 }
 
-export default API
+export default SwapiAPI

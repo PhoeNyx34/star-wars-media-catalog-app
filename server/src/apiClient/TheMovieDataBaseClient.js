@@ -5,10 +5,6 @@ dotenv.config()
 const tmdbApiToken = process.env.TMDB_API_ACCESS_TOKEN
 
 class TheMovieDataBaseClient { 
-    // async getMovieId() {
-
-    // }
-    
     static async getPosterPath(id) {
         const movieId = id
         const url = `https://api.themoviedb.org/3/movie/${movieId}`

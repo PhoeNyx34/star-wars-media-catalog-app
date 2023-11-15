@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 
 import MediaTile from "./MediaTile"
 
-const Index = (props) => {
+const MediaIndex = (props) => {
     const [films, setFilms] = useState([])
 
     const getFilms = async () => {
@@ -44,4 +44,4 @@ const Index = (props) => {
     )
 }
 
-export default Index
+export default MediaIndex

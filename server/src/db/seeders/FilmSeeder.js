@@ -1,17 +1,15 @@
 import got from "got"
 import { Film } from "../../models/index.js"
-import API from "../../apiClient/API.js"
-import FilmSerializer from "../../serializers/FilmSerializer.js"
+import SwapiAPI from "../../apiClient/SwapiClient.js"
+import SeederSerializer from "../../serializers/SeederSerializer.js"
 
 class FilmSeeder {
     static async seed() {
-        const swapiFilms = new API("https://swapi.dev/api/films")
-
-        const response = await swapiFilms.get()
+        const response = await SwapiAPI.get()
         const swapiData = response.results
-        const serializedFilms = swapiFilms.serialize(swapiData, ["title", "release_date"])
+        const serializedFilms = SwapiAPI.serialize(swapiData, ["title", "release_date"])
         const filmsToSeed = await Promise.all(serializedFilms.map(async (film) => {
-            const coverImage = await FilmSerializer.getPosters(film)
+            const coverImage = await SeederSerializer.getPosters(film)
 
             let filmWithRequiredData = {
                 ...film,
