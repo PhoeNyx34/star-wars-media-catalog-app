@@ -1,5 +1,5 @@
 import got from "got"
-import { Film } from "../../models/index.js"
+import { Media } from "../../models/index.js"
 import SwapiAPI from "../../apiClient/SwapiClient.js"
 import SeederSerializer from "../../serializers/SeederSerializer.js"
 
@@ -9,11 +9,13 @@ class FilmSeeder {
         const swapiData = response.results
         const serializedFilms = SwapiAPI.serialize(swapiData, ["title", "release_date"])
         const filmsToSeed = await Promise.all(serializedFilms.map(async (film) => {
-            const coverImage = await SeederSerializer.getPosters(film)
+            const posterAndDescription = await SeederSerializer.getPosterAndDescription(film)
 
             const filmWithRequiredData = {
                 ...film,
-                cover_image: coverImage,
+                type: "film",
+                cover_image: posterAndDescription.coverImage,
+                description: posterAndDescription.description,
                 canon: true,
                 animated: false,
                 rating: "PG"
@@ -23,9 +25,9 @@ class FilmSeeder {
         }))
 
         for (const film of filmsToSeed) {
-            const currentFilm = await Film.query().findOne({ title: film.title})
+            const currentFilm = await Media.query().findOne({ title: film.title})
             if (!currentFilm) {
-                await Film.query().insert(film)
+                await Media.query().insert(film)
             }
         }
 

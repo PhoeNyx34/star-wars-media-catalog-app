@@ -1,7 +1,7 @@
 import TheMovieDataBaseClient from "../apiClient/TheMovieDataBaseClient.js"
 
 class SeederSerializer {
-    static async getPosters(film) {     
+    static async getPosterAndDescription(film) {     
         let movieId = ""
         if (film.title === "A New Hope") {
             movieId = 11
@@ -17,11 +17,14 @@ class SeederSerializer {
             movieId = 1895
         }
 
-        const posterPath = await TheMovieDataBaseClient.getPosterPath(movieId)
+        const info = await TheMovieDataBaseClient.getPosterAndDescription(movieId)
 
-        const coverImage = `http://image.tmdb.org/t/p/w342${posterPath}`
+        const coverImage = `http://image.tmdb.org/t/p/w342${info.posterPath}`
+        const description = info.description
 
-        return coverImage
+        const data = { coverImage: coverImage, description: description}
+
+        return data
     }
 }
 
