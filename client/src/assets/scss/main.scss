@@ -40,19 +40,16 @@ body {
   color: #F9FEFA;
 }
 
-h1 {
-  font-variant: small-caps; 
-}
-
 #home-media-index {
   margin: 0px 100px;
 }
 
 .media-tile {
   margin: 20px;
-  background-color: #ffffff;
+  background-color: #F9FEFA;
   border: 2px solid #193665;
   box-shadow: 10px 8px 5px #193665;
+  border-radius: 5px;
 }
 
 .media-tile-cover {
@@ -65,4 +62,62 @@ h1 {
   font-size: 2em;
   text-align: center;
   padding-top: 15px;
+}
+
+.media-show-container {
+  color: #193665;
+  margin: auto;
+  margin-top: 100px;
+  width: 69%;
+  background-color: #F9FEFA;
+  border: 2px solid #193665;
+  border-radius: 10px;
+  box-shadow: 10px 8px 5px #193665;
+}
+
+.media-show-details {
+  padding: 25px;
+
+  h1 {
+    padding-bottom: 10px;
+    font-weight: bold;
+  }
+}
+
+.tag-bubbles {
+  padding-top: 25px;
+  list-style-type: none;
+}
+
+.tag {
+  border-radius: 30px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  width: 150px;
+}
+
+.canon {
+  border-color: #193665;
+  background-color: #193665;
+  color: #F9FEFA;
+}
+
+.legend {
+  border-color: #650901;
+  background-color: #650901;
+  color: #F9FEFA;
+}
+
+.animated {
+  border-color: #C83C15;
+  background-color: #C83C15;
+  color: #F9FEFA;
+}
+
+.lego {
+  border-color: #FFD700;
+  background-color: #FFD700;
+  width: 125px;
+  color: #071018;
 }

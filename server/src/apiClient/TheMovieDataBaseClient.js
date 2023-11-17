@@ -1,11 +1,8 @@
 import got from "got"
-import dotenv from "dotenv"
-dotenv.config()
-
-const tmdbApiToken = process.env.TMDB_API_ACCESS_TOKEN
+import config from "../config.js"
 
 class TheMovieDataBaseClient { 
-    static async getPosterPath(id) {
+    static async getPosterAndDescription(id) {
         const movieId = id
         const url = `https://api.themoviedb.org/3/movie/${movieId}`
         
@@ -14,12 +11,15 @@ class TheMovieDataBaseClient {
                 method: "GET",
                 headers: {
                     accept: "application/json",
-                    Authorization: `Bearer ${tmdbApiToken}`
+                    Authorization: `Bearer ${config.tmdbApi.tmdbApiToken}`
                 }
             }
             const apiResponse = await got(url, options).json()
+            const description = apiResponse.overview
             const posterPath = apiResponse.poster_path
-            return posterPath
+
+            const gotInfo = { description: description, posterPath: posterPath }
+            return gotInfo
         } catch (error) {
             return { error: error.message }
         }

@@ -3,32 +3,34 @@ import React, { useState, useEffect } from "react"
 import MediaTile from "./MediaTile"
 
 const MediaIndex = (props) => {
-    const [films, setFilms] = useState([])
+    const [media, setMedia] = useState([])
 
-    const getFilms = async () => {
+    const getMedia = async () => {
         try {
-            const response = await fetch('/api/v1/films')
+            const response = await fetch('/api/v1/media/index-page')
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
                 throw error
             }
             const body = await response.json()
-            setFilms(body.films)
+            setMedia(body.media)
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
     }
 
     useEffect(() => {
-        getFilms()
+        getMedia()
     },[])
 
-    const filmTiles = films.map(film => {
-        return <MediaTile 
-            key={film.id}
-            film={film}
-        />
+    const mediaTiles = media.map(item => {
+        return (
+            <MediaTile 
+                key={media.id}
+                item={item}
+            />
+        )
     })
     
     return (
@@ -40,7 +42,7 @@ const MediaIndex = (props) => {
                 </div>
             </div>
             <div id="home-media-index" className="grid-x grid-margin-x">
-                {filmTiles}
+                {mediaTiles}
             </div>
         </>
     )

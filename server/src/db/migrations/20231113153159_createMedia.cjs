@@ -6,8 +6,9 @@
  * @param {Knex} knex
  */
 exports.up = async (knex) => {
-    return knex.schema.createTable("films", (table) => {
+    return knex.schema.createTable("media", (table) => {
         table.bigIncrements("id").notNullable()
+        table.string("type").notNullable()
         table.string("title").notNullable()
         table.date("release_date").notNullable()
         table.string("cover_image")
@@ -27,5 +28,5 @@ exports.up = async (knex) => {
  * @param {Knex} knex
  */
 exports.down = (knex) => {
-    return knex.schema.dropTableIfExists("films")
+    return knex.schema.dropTableIfExists("media")
 }

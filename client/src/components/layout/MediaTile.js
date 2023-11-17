@@ -1,13 +1,14 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
-const MediaTile = ({ film }) => {
-    const { id, title, cover_image } = film
+const MediaTile = ({ item }) => {
+    const { id, title, cover_image } = item
 
     return (
-        <div className="cell small-3 media-tile">
+        <Link to={`/${id}`} className="cell small-3 media-tile">
             <img src={cover_image} className="media-tile-cover"/>
             <p className="media-tile-title">{title}</p>
-        </div>
+        </Link>
     )
 } 
 
