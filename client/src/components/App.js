@@ -29,10 +29,14 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/home" component={MediaIndex}/>
+        <Route exact path="/" render={(props) => {
+          return <MediaIndex user={currentUser} {...props}/>
+        }}/>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
-        <Route exact path="/:id" component={MediaShow} />
+        <Route exact path="/:id" render={(props) => {
+          return <MediaShow user={currentUser} {...props}/>
+        }}/>
       </Switch>
     </Router>
   );

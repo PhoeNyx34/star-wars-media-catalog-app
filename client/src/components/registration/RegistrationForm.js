@@ -28,6 +28,13 @@ const RegistrationForm = () => {
       };
     }
 
+    if (email.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        email: "is required",
+      };
+    }
+
     if (password.trim() == "") {
       newErrors = {
         ...newErrors,
@@ -101,7 +108,7 @@ const RegistrationForm = () => {
   return (
     <div className="grid-container">
       <h1>Register</h1>
-	  <ErrorList errors={serverErrors} />
+	    <ErrorList errors={serverErrors} />
       <form onSubmit={onSubmit}>
         <div>
           <label>
