@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 
 import MediaTile from "./MediaTile"
 
-const MediaIndex = (props) => {
+const MediaIndex = ({ user }) => { 
     const [media, setMedia] = useState([])
 
     const getMedia = async () => {
@@ -29,6 +29,7 @@ const MediaIndex = (props) => {
             <MediaTile 
                 key={item.id}
                 item={item}
+                user={user}
             />
         )
     })
