@@ -34,8 +34,7 @@ mediaRouter.post("/", async (req,res) => {
     const newMedia = cleanUserInput(formInput)
     try {
         const persistedMedia = await Media.query().insertAndFetch(newMedia)
-        console.log(persistedMedia)
-        return res.status(201).json({ newMedia: persistedMedia })
+        return res.status(201).json({ persistedMediaId: persistedMedia.id })
     } catch (error) {
         if (error instanceof ValidationError) {
             return res.status(422).json({ errors: error.data })

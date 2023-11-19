@@ -31,7 +31,6 @@ const NewMediaForm = ({ user }) => {
         lego: "false",
         rating: ""
     })
-    const [persistedMedia, setPersistedMedia] = useState({})
 
     const persistNewMedia = async () => {
         try {
@@ -52,16 +51,10 @@ const NewMediaForm = ({ user }) => {
                 }
             }
             const body = await response.json()
-            console.log(body.newMedia)
-            setPersistedMedia(body.newMedia)
-            console.log(persistedMedia)
+            location.href=`/${body.persistedMediaId}`
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
-    }
-
-    if (shouldRedirect) {
-        return <Redirect push to={`/${newMedia.id}`}/>
     }
 
     const handleInputChange = (event) => {
@@ -89,7 +82,6 @@ const NewMediaForm = ({ user }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         persistNewMedia()
-        // setShouldRedirect(true)
     } 
 
     return (
