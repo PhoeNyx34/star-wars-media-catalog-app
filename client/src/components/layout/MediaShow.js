@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
-const MediaShow = (props) => {
+import executeDelete from "../../services/deleteMedia.js"
+
+const MediaShow = ({ user }) => {
     const [media, setMedia] = useState({
         behindSceneRoles: [],
     })
@@ -66,6 +68,20 @@ const MediaShow = (props) => {
         return <li key={tag} className={tagName}>{tag}</li>
     })
 
+    const deleteMedia = (event) => {
+        event.preventDefault()
+        executeDelete(id)
+    }
+
+    let adminButtons
+    if (user && user.type === "admin") {
+        adminButtons = (
+            <div className="show-admin-buttons">
+                <button className="button" onClick={deleteMedia}>Delete</button>
+            </div>
+        )
+    }
+
     return (
         <div className="media-show-container grid-x">
             <img src={media.cover_image} className="cell medium-5 media-show-cover"/>
@@ -77,6 +93,7 @@ const MediaShow = (props) => {
                 <p>Audience rating: {media.rating}</p>
                 <p>{media.description}</p>
                 <ul className="tag-bubbles">{tagBubbles}</ul>
+                {adminButtons}
             </div>
         </div>
     )
