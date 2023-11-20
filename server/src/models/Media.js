@@ -17,9 +17,9 @@ class Media extends Model {
                 description: { type: "string" },
                 fictional_year_start: { type: "string" },
                 fictional_year_end: { type: "string" },
-                canon: { type: "boolean" },
-                animated: { type: "boolean" },
-                lego: { type: "boolean" },
+                canon: { type: [ "boolean", "string" ] },
+                animated: { type: [ "boolean", "string" ] },
+                lego: { type: [ "boolean", "string" ] },
                 rating: { type: "string" },
             }
         }

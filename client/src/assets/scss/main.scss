@@ -17,6 +17,17 @@ body {
   background-color: #E3F1FB;
 }
 
+.button {
+  background-color: #1B7EC4;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.form-buttons {
+  margin-top: 50px;
+  justify-content: space-around;
+}
+
 .top-bar {
   background-color: #193665;
 
@@ -24,10 +35,15 @@ body {
     background-color: #193665;
     color: #F9FEFA;
   }
+
+  .nav-option {
+    color: #F9FEFA;
+    ;
+  }
 }
 
 #home-header {
-  background-image: url("./images/index-page-hero-banner_1600x700.jpg");
+  background-image: url(./../images/index-page-hero-banner_1600x700.jpg);
   background-color: #193665;
   background-repeat: no-repeat;
   background-position-x: center;
@@ -120,4 +136,55 @@ body {
   background-color: #FFD700;
   width: 125px;
   color: #071018;
+}
+
+.non-media-page {
+  width: 69%;
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  color: #193665;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+}
+
+legend, label {
+  color: #193665;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.required {
+  color: #C83C15;
+}
+
+.choice-grid {
+  max-width: 600px;
+}
+
+.radio-choice {
+  font-weight: normal;
+}
+
+.admin-restricted-page {
+  background-color: #FFDFDC;
+  color: #650901;
+  width: 69%;
+  margin: auto;
+  margin-top: 50px;
+  border: 2px solid #650901;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  font-weight: bold;
+
+  h1 {
+    margin: 50px 0px;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
 }

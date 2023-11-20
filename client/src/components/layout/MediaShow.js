@@ -18,7 +18,6 @@ const MediaShow = (props) => {
             const body = await response.json()
             setMedia(body.media)
         } catch (error) {
-            console.log(error)
             console.error(`Error in fetch: ${error.message}`)
         }
     }

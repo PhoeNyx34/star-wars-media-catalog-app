@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import config from "../../config";
 import FormError from "../layout/FormError";
+import ErrorList from "../layout/ErrorList";
+import translateServerErrors from "../../services/translateServerErrors";
 
 const SignInForm = () => {
   const [userPayload, setUserPayload] = useState({ email: "", password: "" });
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
+  const [serverErrors, setServerErrors] = useState({})
 
   const validateInput = (payload) => {
     setErrors({});
@@ -47,9 +50,15 @@ const SignInForm = () => {
           }),
         });
         if (!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`;
-          const error = new Error(errorMessage);
-          throw error;
+          if (response.status === 422) {
+            const body = await response.json();
+            const newServerErrors = translateServerErrors(body.errors)
+            return setServerErrors(newServerErrors)
+          } else {
+            const errorMessage = `${response.status} (${response.statusText})`;
+            const error = new Error(errorMessage);
+            throw error;
+          }
         }
         const userData = await response.json();
         setShouldRedirect(true);
@@ -71,8 +80,9 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
+    <div className="grid-container non-media-page" onSubmit={onSubmit}>
       <h1>Sign In</h1>
+      <ErrorList errors={serverErrors} />
       <form>
         <div>
           <label>

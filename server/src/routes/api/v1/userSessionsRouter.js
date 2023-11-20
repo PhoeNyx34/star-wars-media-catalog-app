@@ -8,6 +8,7 @@ sessionRouter.post("/", (req, res, next) => {
     if (err) {
       // eslint-disable-next-line no-console
       console.log(err);
+      return res.status(422).json({ errors: err.message })
     }
 
     if (user) {

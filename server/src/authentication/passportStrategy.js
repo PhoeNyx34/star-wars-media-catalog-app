@@ -11,9 +11,9 @@ const authHandler = (email, password, done) => {
           return done(null, user);
         }
 
-        return done(null, false, { message: "Invalid credentials" });
+        return done({ message: "Invalid credentials" }, false);
       }
-      return done(null, false, { message: "Invalid credentials" });
+      return done({ message: "User not found" }, false);
     });
 };
 

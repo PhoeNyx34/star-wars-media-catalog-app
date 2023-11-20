@@ -27,7 +27,7 @@ const MediaIndex = (props) => {
     const mediaTiles = media.map(item => {
         return (
             <MediaTile 
-                key={media.id}
+                key={item.id}
                 item={item}
             />
         )
