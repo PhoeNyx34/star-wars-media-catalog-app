@@ -53,7 +53,6 @@ const SignInForm = () => {
           if (response.status === 422) {
             const body = await response.json();
             const newServerErrors = translateServerErrors(body.errors)
-            console.log(newServerErrors)
             return setServerErrors(newServerErrors)
           } else {
             const errorMessage = `${response.status} (${response.statusText})`;
@@ -64,7 +63,6 @@ const SignInForm = () => {
         const userData = await response.json();
         setShouldRedirect(true);
       } catch (err) {
-        console.log(err.message)
         console.error(`Error in fetch: ${err.message}`);
       }
     }
@@ -82,7 +80,7 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
+    <div className="grid-container non-media-page" onSubmit={onSubmit}>
       <h1>Sign In</h1>
       <ErrorList errors={serverErrors} />
       <form>
