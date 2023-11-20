@@ -10,7 +10,7 @@ const NewMediaForm = ({ user }) => {
     if (type === "member") {
         return (
             <div className="admin-restricted-page">
-                <h1>WARNING!<br/>Restricted Area</h1>
+                <h1>WARNING!<br/>CODE 403: Forbidden Area</h1>
                 <p>Return home, Rebel Scum</p>
             </div>
         )
@@ -100,17 +100,14 @@ const NewMediaForm = ({ user }) => {
                         <option value="video_game">Video Game</option>
                     </select>
                 </label>
-
                 <label>
                     <span className="required">*</span>Title:
                     <input type="text" name="title" value={newMedia.title} onChange={handleInputChange} />
                 </label>
-
                 <label>
                     Description:
                     <input type="text" name="description" value={newMedia.description} onChange={handleInputChange} />
                 </label>
-
                 <div className="grid-x">
                     <label className="cell medium-6">
                         <span className="required">*</span>Release Date:
@@ -122,12 +119,10 @@ const NewMediaForm = ({ user }) => {
                         <input type="text" name="rating" value={newMedia.rating} onChange={handleInputChange} />
                     </label>
                 </div>
-
                 <label>
                     Cover Image:
                     <input type="text" name="cover_image" value={newMedia.cover_image} onChange={handleInputChange} />
                 </label>
-
                 <div className="grid-x">
                     <label className="cell medium-6">
                         Beginning Year:
@@ -139,7 +134,6 @@ const NewMediaForm = ({ user }) => {
                         <input type="text" name="fictional_year_end" value={newMedia.fictional_year_end} onChange={handleInputChange} />
                     </label>
                 </div>
-
                 <div className="choice-grid">
                 <fieldset className="grid-x">
                     <label className="cell small-3"><span className="required">*</span>Select one:</label>
@@ -156,7 +150,6 @@ const NewMediaForm = ({ user }) => {
                         </label>
                     </div>
                 </fieldset>
-
                 <fieldset className="grid-x">
                     <label className="cell small-3"><span className="required">*</span>Is this animated?</label>
                     <div className="cell small-2">
@@ -172,7 +165,6 @@ const NewMediaForm = ({ user }) => {
                         </label>
                     </div>
                 </fieldset>
-
                 <fieldset className="grid-x">
                     <label className="cell small-3">Is this Lego?</label>
                     <div className="cell small-2">

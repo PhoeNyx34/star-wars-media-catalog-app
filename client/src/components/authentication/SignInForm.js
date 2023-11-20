@@ -53,7 +53,6 @@ const SignInForm = () => {
           if (response.status === 422) {
             const body = await response.json();
             const newServerErrors = translateServerErrors(body.errors)
-            console.log(newServerErrors)
             return setServerErrors(newServerErrors)
           } else {
             const errorMessage = `${response.status} (${response.statusText})`;
@@ -64,7 +63,6 @@ const SignInForm = () => {
         const userData = await response.json();
         setShouldRedirect(true);
       } catch (err) {
-        console.log(err.message)
         console.error(`Error in fetch: ${err.message}`);
       }
     }
