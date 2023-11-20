@@ -33,6 +33,7 @@ const MediaTile = ({ item, user }) => {
             }
             location.href = "/"
         } catch (error) {
+            window.alert("Delete unsuccessful")
             console.error(`Error in fetch: ${error.message}`)
         }
     }

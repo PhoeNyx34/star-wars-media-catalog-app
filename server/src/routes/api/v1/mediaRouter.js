@@ -32,7 +32,7 @@ mediaRouter.delete("/:id", async (req,res) => {
         const media = await Media.query().findById(id)
         await media.$relatedQuery("contributors").unrelate()
         await Media.query().deleteById(id)
-        return res.status(201).json("Media deleted")
+        return res.status(201).json()
     }
     catch (error) {
         console.log(error)
