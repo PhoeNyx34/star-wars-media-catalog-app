@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 import executeDelete from "../../services/deleteMedia.js"
+import setOwnership from "../../services/setOwnership.js"
 
 const MediaShow = ({ user }) => {
     const [media, setMedia] = useState({
         behindSceneRoles: [],
     })
+    const [shouldRedirect, setShouldRedirect] = useState(false)
     const { id } = useParams()
     
     const getMedia = async () => {
@@ -26,7 +28,7 @@ const MediaShow = ({ user }) => {
 
     useEffect(() => {
         getMedia()
-    }, [])
+    },[])
 
     let directors = []
     let writers = []
@@ -68,6 +70,29 @@ const MediaShow = ({ user }) => {
         return <li key={tag} className={tagName}>{tag}</li>
     })
 
+    const ownMedia = (event) => {
+        event.preventDefault()
+        setOwnership(id, user.id)
+        setShouldRedirect(true)
+    }
+
+    if (shouldRedirect) {
+        location.href=`/${id}`
+    }
+
+    let memberButtons = []
+    if (user) {
+        if (media.isOwned) {
+            memberButtons.push(
+                    <button key="owned" className="button" onClick={ownMedia}>Mark as Unowned</button>
+            )
+        } else {
+            memberButtons.push(
+                <button key="owned" className="button" onClick={ownMedia}>Mark as Owned</button>
+            )
+        }
+    }
+
     const deleteMedia = (event) => {
         event.preventDefault()
         executeDelete(id)
@@ -94,6 +119,7 @@ const MediaShow = ({ user }) => {
                 <p>{media.description}</p>
                 <ul className="tag-bubbles">{tagBubbles}</ul>
                 {adminButtons}
+                {memberButtons}
             </div>
         </div>
     )

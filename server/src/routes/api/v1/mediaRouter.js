@@ -1,6 +1,6 @@
 import express from "express"
 
-import { Media } from "../../../models/index.js"
+import { Media, User } from "../../../models/index.js"
 import MediaSerializer from "../../../serializers/MediaSerializer.js"
 import objection from "objection"
 const { ValidationError } = objection 
@@ -9,9 +9,16 @@ import cleanUserInput from "../../services/cleanUserInput.js"
 const mediaRouter = new express.Router()
 
 mediaRouter.get("/index-page", async (req, res) => {
+    const user = req.user
+    
     try {
         const media = await Media.query()
-        const serializedMedia = MediaSerializer.getCoverAndTitle(media)
+        let serializedMedia
+        if (user) {
+            serializedMedia = await MediaSerializer.getCoverAndTitle(media, user.id)
+        } else {
+            serializedMedia = await MediaSerializer.getCoverAndTitle(media)
+        }
         return res.status(200).json({ media: serializedMedia })
     } catch (error) {
         return res.status(500).json({ errors: error })
@@ -20,10 +27,17 @@ mediaRouter.get("/index-page", async (req, res) => {
 
 mediaRouter.get("/:id", async (req, res) => {
     const id = req.params.id
+    const user = req.user
+
     try {
         const media = await Media.query().findById(id)
-        const mediaToSend = await MediaSerializer.getContributors(media)
-        return res.status(200).json({ media: mediaToSend })
+        let serializedMedia
+        if (user) {
+            serializedMedia = await MediaSerializer.getContributors(media, user.id)
+        } else {
+            serializedMedia = await MediaSerializer.getContributors(media)
+        }
+        return res.status(200).json({ media: serializedMedia })
     } catch (error) {
         return res.status(500).json({ errors: error })
     }
@@ -52,7 +66,6 @@ mediaRouter.delete("/:id", async (req,res) => {
         return res.status(201).json()
     }
     catch (error) {
-        console.log(error)
         return res.status(500).json({ errors: error })
     }
 })
