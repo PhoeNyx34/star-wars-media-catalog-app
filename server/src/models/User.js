@@ -44,6 +44,33 @@ class User extends uniqueFunc(Model) {
 
     return serializedJson;
   }
+
+  static get relationMappings() {
+    const { Media, OwnedMedia } = require("./index.js")
+
+    return {
+      media: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Media,
+        join: {
+          from: "users.id",
+          through: {
+            from: "userOwns.userId",
+            to: "userOwns.mediaId"
+          },
+          to: "media.id"
+        }
+      },
+      owns: {
+        relation: Model.HasManyRelation,
+        modelClass: OwnedMedia,
+        join: {
+          from: "users.id",
+          to: "userOwns.userId"
+        }
+      }
+    }
+  }
 }
 
 module.exports = User;

@@ -26,7 +26,7 @@ class Media extends Model {
     }
 
     static get relationMappings() {
-        const { Contributor, BehindSceneRole } = require("./index.js")
+        const { Contributor, BehindSceneRole, OwnedMedia, User } = require("./index.js")
 
         return {
             behindSceneRoles: {
@@ -47,6 +47,26 @@ class Media extends Model {
                         to: "behindSceneRoles.contributorId"
                     },
                     to: "contributors.id"
+                }
+            },
+            ownedBy: {
+                relation: Model.HasManyRelation,
+                modelClass: OwnedMedia,
+                join: {
+                    from: "media.id",
+                    to: "userOwns.mediaId"
+                }
+            },
+            users: {
+                relation: Model.ManyToManyRelation,
+                modelClass: User,
+                join: {
+                    from: "media.id",
+                    through: {
+                        from: "userOwns.mediaId",
+                        to: "userOwns.userId"
+                    },
+                    to: "users.id"
                 }
             }
         }

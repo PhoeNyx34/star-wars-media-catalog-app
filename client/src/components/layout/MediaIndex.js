@@ -38,8 +38,8 @@ const MediaIndex = ({ user }) => {
         <>
             <div id="home-header">
                 <div className="header-text">
-                    <h1>Star Wars</h1>
-                    <h3>an interactive media catalog</h3>
+                    <h1>Holocron</h1>
+                    <h3>an interactive Star Wars media catalog</h3>
                 </div>
             </div>
             <div id="home-media-index" className="grid-x grid-margin-x">
