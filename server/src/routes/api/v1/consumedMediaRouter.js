@@ -1,23 +1,22 @@
 import express from "express"
 
-import { Media, User } from "../../../models/index.js"
+import { User, Media } from "../../../models/index.js" 
 import MediaSerializer from "../../../serializers/MediaSerializer.js"
 
-const ownedMediaRouter = new express.Router()
+const consumedMediaRouter = new express.Router()
 
-ownedMediaRouter.post("/:mediaId", async (req,res) => {
+consumedMediaRouter.post("/:mediaId", async (req,res) => {
     const mediaId = req.params.mediaId
     const userId = req.user.id
-
     try {
         const media = await Media.query().findById(mediaId)
         const user = await User.query().findById(userId)
-        const currentRelationship = await media.$relatedQuery('ownedBy').where('userId', userId)
+        const currentRelationship = await media.$relatedQuery('consumedBy').where('userId', userId)
         if (currentRelationship.length > 0) {
-            await media.$relatedQuery('ownedBy').unrelate().where('userId', userId)
+            await media.$relatedQuery('consumedBy').unrelate().where('userId', userId)
         }
         else {
-            await media.$relatedQuery('ownedBy').relate(user)
+            await media.$relatedQuery('consumedBy').relate(user)
         }
         return res.status(201)
     } catch (error) {
@@ -25,4 +24,4 @@ ownedMediaRouter.post("/:mediaId", async (req,res) => {
     }
 })
 
-export default ownedMediaRouter
+export default consumedMediaRouter

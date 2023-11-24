@@ -26,7 +26,7 @@ class User extends uniqueFunc(Model) {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["email", "type"],
+      required: ["email"],
       properties: {
         email: { type: "string", pattern: "^\\S+@\\S+\\.\\S+$" },
         cryptedPassword: { type: "string" },
@@ -46,27 +46,47 @@ class User extends uniqueFunc(Model) {
   }
 
   static get relationMappings() {
-    const { Media, OwnedMedia } = require("./index.js")
+    const { Media, Ownership, Consumership } = require("./index.js")
 
     return {
-      media: {
+      ownedMedia: {
         relation: Model.ManyToManyRelation,
         modelClass: Media,
         join: {
           from: "users.id",
           through: {
-            from: "userOwns.userId",
-            to: "userOwns.mediaId"
+            from: "ownerships.userId",
+            to: "ownerships.mediaId"
           },
           to: "media.id"
         }
       },
-      owns: {
+      ownerships: {
         relation: Model.HasManyRelation,
-        modelClass: OwnedMedia,
+        modelClass: Ownership,
         join: {
           from: "users.id",
-          to: "userOwns.userId"
+          to: "ownerships.userId"
+        }
+      },
+      consumedMedia: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Media,
+        join: {
+          from: "users.id",
+          through: {
+            from: "consumerships.userId",
+            to: "consumerships.mediaId"
+          },
+          to: "media.id"
+        }
+      },
+      consumerships: {
+        relation: Model.HasManyRelation,
+        modelClass: Consumership,
+        join: {
+          from: "users.id",
+          to: "consumerships.userId"
         }
       }
     }

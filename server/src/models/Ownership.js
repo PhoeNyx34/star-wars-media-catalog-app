@@ -1,8 +1,8 @@
 const Model = require("./Model.js")
 
-class OwnedMedia extends Model {
+class Ownership extends Model {
     static get tableName() {
-        return "userOwns"
+        return "ownerships"
     }
 
     static get jsonSchema() {
@@ -24,7 +24,7 @@ class OwnedMedia extends Model {
                 relation: Model.BelongsToOneRelation,
                 modelClass: User,
                 join: {
-                    from: "userOwns.userId",
+                    from: "ownerships.userId",
                     to: "users.id"
                 }
             },
@@ -32,7 +32,7 @@ class OwnedMedia extends Model {
                 relation: Model.BelongsToOneRelation,
                 modelClass: Media,
                 join: {
-                    from: "userOwns.mediaId",
+                    from: "ownerships.mediaId",
                     to: "media.id"
                 }
             }
@@ -40,4 +40,4 @@ class OwnedMedia extends Model {
     }
 }
 
-module.exports = OwnedMedia
+module.exports = Ownership

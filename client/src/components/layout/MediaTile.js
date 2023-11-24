@@ -3,14 +3,20 @@ import { Link } from "react-router-dom"
 
 import executeDelete from "../../services/deleteMedia.js"
 import setOwnership from "../../services/setOwnership.js"
+import setConsumership from "../../services/setConsumership.js"
 
 const MediaTile = ({ item, user }) => {
-    const { id, title, cover_image, isOwned } = item
+    const { id, title, cover_image, isOwned, isConsumed } = item
     const [shouldRedirect, setShouldRedirect] = useState(false)
 
     const ownMedia = (event) => {
         event.preventDefault()
         setOwnership(id, user.id)
+        setShouldRedirect(true)
+    }
+    const consumeMedia = (event) => {
+        event.preventDefault()
+        setConsumership(id)
         setShouldRedirect(true)
     }
 
@@ -27,6 +33,15 @@ const MediaTile = ({ item, user }) => {
         } else {
             memberButtons.push(
                 <button key="owned" className="button" onClick={ownMedia}>Mark as Owned</button>
+            )
+        }
+        if (isConsumed) {
+            memberButtons.push(
+                    <button key="consumed" className="button" onClick={consumeMedia}>Mark as Unwatched</button>
+            )
+        } else {
+            memberButtons.push(
+                <button key="consumed" className="button" onClick={consumeMedia}>Mark as Watched</button>
             )
         }
     }

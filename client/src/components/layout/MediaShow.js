@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 
 import executeDelete from "../../services/deleteMedia.js"
 import setOwnership from "../../services/setOwnership.js"
+import setConsumership from "../../services/setConsumership.js"
 
 const MediaShow = ({ user }) => {
     const [media, setMedia] = useState({
@@ -76,6 +77,12 @@ const MediaShow = ({ user }) => {
         setShouldRedirect(true)
     }
 
+    const consumeMedia = (event) => {
+        event.preventDefault()
+        setConsumership(id)
+        setShouldRedirect(true)
+    }
+
     if (shouldRedirect) {
         location.href=`/${id}`
     }
@@ -89,6 +96,15 @@ const MediaShow = ({ user }) => {
         } else {
             memberButtons.push(
                 <button key="owned" className="button" onClick={ownMedia}>Mark as Owned</button>
+            )
+        }
+        if (media.isConsumed) {
+            memberButtons.push(
+                    <button key="consumed" className="button" onClick={consumeMedia}>Mark as Unwatched</button>
+            )
+        } else {
+            memberButtons.push(
+                <button key="consumed" className="button" onClick={consumeMedia}>Mark as Watched</button>
             )
         }
     }

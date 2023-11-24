@@ -4,17 +4,19 @@ import { Link } from "react-router-dom"
 const AccountPage = ({ user }) => {
     const { id, email, type } = user
     const [ownedMedia, setOwnedMedia] = useState([])
+    const [consumedMedia, setConsumedMedia] = useState([])
 
     const getUserMedia = async () => {
         try {
-            const response = await fetch(`/api/v1/owned-media/${id}`)
+            const response = await fetch(`/api/v1/user-sessions/${id}`)
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
                 throw error
             }
             const body = await response.json()
-            setOwnedMedia(body.ownedMedia)
+            setOwnedMedia(body.media.ownerships)
+            setConsumedMedia(body.media.consumerships)
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
@@ -25,6 +27,11 @@ const AccountPage = ({ user }) => {
     }, [])
 
     const ownedMediaList = ownedMedia.map(media => {
+        return (
+            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &mdash; {media.type}</li>
+        )
+    })
+    const consumedMediaList = consumedMedia.map(media => {
         return (
             <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &mdash; {media.type}</li>
         )
@@ -42,11 +49,19 @@ const AccountPage = ({ user }) => {
             <h1>Account</h1>
             <p>Email: {email}</p>
             {adminButtons}
-            <div className="media-list">
-                <h3>Media I Own</h3>
-                <ul>
-                    {ownedMediaList}
-                </ul>
+            <div className="grid-x user-account-media-lists">
+                <div className="cell medium-6">
+                    <h3>Media I Own</h3>
+                    <ul>
+                        {ownedMediaList}
+                    </ul>
+                </div>
+                <div className="cell medium-6">
+                    <h3>Media I've Consumed</h3>
+                    <ul>
+                        {consumedMediaList}
+                    </ul>
+                </div>
             </div>
         </div>
     )

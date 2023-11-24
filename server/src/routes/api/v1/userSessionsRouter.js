@@ -1,6 +1,9 @@
 import express from "express";
 import passport from "passport";
 
+import { User } from "../../../models/index.js"
+import MediaSerializer from "../../../serializers/MediaSerializer.js";
+
 const sessionRouter = new express.Router();
 
 sessionRouter.post("/", (req, res, next) => {
@@ -33,5 +36,20 @@ sessionRouter.delete("/", (req, res) => {
   req.logout();
   res.status(200).json({ message: "User signed out" });
 });
+
+sessionRouter.get("/:userId", async (req, res) => {
+  const id = req.params.userId
+    try {
+      const user = await User.query().findById(id)
+      const ownedMedia = await user.$relatedQuery('ownedMedia')
+      const consumedMedia = await user.$relatedQuery('consumedMedia')
+      const serializedOwnership = MediaSerializer.getTitleAndType(ownedMedia)
+      const serializedConsumership = MediaSerializer.getTitleAndType(consumedMedia)
+      return res.status(200).json({ media: {ownerships: serializedOwnership, consumerships: serializedConsumership} })
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({ errors: error })
+    }
+})
 
 export default sessionRouter;

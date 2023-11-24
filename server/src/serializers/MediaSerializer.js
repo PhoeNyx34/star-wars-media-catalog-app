@@ -14,11 +14,13 @@ class MediaSerializer {
         serializedMedia.behindSceneRoles = serializedRoles
 
         if (userId) {
-            const isOwned = await media.$relatedQuery('users').where('userId', userId)
+            const isOwned = await media.$relatedQuery('ownedBy').where('userId', userId)
             if (isOwned.length > 0) {
                 serializedMedia.isOwned = true
-            } else {
-                serializedMedia.isOwned = false
+            }
+            const isConsumed = await media.$relatedQuery('consumedBy').where('userId', userId)
+            if (isConsumed.length > 0) {
+                serializedMedia.isConsumed = true
             }
         }
 
@@ -35,9 +37,14 @@ class MediaSerializer {
                     serializedItem[attribute] = item[attribute]
                 }
     
-                const isOwned = await item.$relatedQuery('users').where('userId', userId)
+                const isOwned = await item.$relatedQuery('ownedBy').where('userId', userId)
                 if (isOwned.length > 0) {
                     serializedItem.isOwned = true
+                }
+
+                const isConsumed = await item.$relatedQuery('consumedBy').where('userId', userId)
+                if (isConsumed.length > 0) {
+                    serializedItem.isConsumed = true
                 }
     
                 return serializedItem
