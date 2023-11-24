@@ -46,7 +46,7 @@ class User extends uniqueFunc(Model) {
   }
 
   static get relationMappings() {
-    const { Media, Ownership, Consumership } = require("./index.js")
+    const { Media, Ownership, Consumership, Wantship } = require("./index.js")
 
     return {
       ownedMedia: {
@@ -87,6 +87,26 @@ class User extends uniqueFunc(Model) {
         join: {
           from: "users.id",
           to: "consumerships.userId"
+        }
+      },
+      wantedMedia: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Media,
+        join: {
+          from: "users.id",
+          through: {
+            from: "wantships.userId",
+            to: "wantships.mediaId"
+          },
+          to: "media.id"
+        }
+      },
+      wantships: {
+        relation: Model.HasManyRelation,
+        modelClass: Wantship,
+        join: {
+          from: "users.id",
+          to: "wantships.userId"
         }
       }
     }

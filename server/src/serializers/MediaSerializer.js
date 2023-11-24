@@ -1,7 +1,7 @@
 import RoleSerializer from "./RoleSerializer.js"
 
 class MediaSerializer {
-    static async getContributors(media, userId) {
+    static async getAllInfo(media, userId) {
         const allowedAttributes = ["id", "type", "title", "cover_image", "release_date", "description", "fictional_year_start", "fictional_year_end", "canon", "animated", "lego", "rating"]
         const serializedMedia = {}
         
@@ -22,6 +22,10 @@ class MediaSerializer {
             if (isConsumed.length > 0) {
                 serializedMedia.isConsumed = true
             }
+            const isWanted = await media.$relatedQuery('wantedBy').where('userId', userId)
+            if (isWanted.length > 0) {
+                serializedMedia.isWanted = true
+            }
         }
 
         return serializedMedia
@@ -41,10 +45,13 @@ class MediaSerializer {
                 if (isOwned.length > 0) {
                     serializedItem.isOwned = true
                 }
-
                 const isConsumed = await item.$relatedQuery('consumedBy').where('userId', userId)
                 if (isConsumed.length > 0) {
                     serializedItem.isConsumed = true
+                }
+                const isWanted = await item.$relatedQuery('wantedBy').where('userId', userId)
+                if (isWanted.length > 0) {
+                    serializedItem.isWanted = true
                 }
     
                 return serializedItem

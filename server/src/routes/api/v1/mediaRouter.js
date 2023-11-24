@@ -33,9 +33,9 @@ mediaRouter.get("/:id", async (req, res) => {
         const media = await Media.query().findById(id)
         let serializedMedia
         if (user) {
-            serializedMedia = await MediaSerializer.getContributors(media, user.id)
+            serializedMedia = await MediaSerializer.getAllInfo(media, user.id)
         } else {
-            serializedMedia = await MediaSerializer.getContributors(media)
+            serializedMedia = await MediaSerializer.getAllInfo(media)
         }
         return res.status(200).json({ media: serializedMedia })
     } catch (error) {

@@ -1,7 +1,6 @@
 import express from "express"
 
 import { User, Media } from "../../../models/index.js" 
-import MediaSerializer from "../../../serializers/MediaSerializer.js"
 
 const consumedMediaRouter = new express.Router()
 

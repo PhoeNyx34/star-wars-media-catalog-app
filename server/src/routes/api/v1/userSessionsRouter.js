@@ -43,9 +43,11 @@ sessionRouter.get("/:userId", async (req, res) => {
       const user = await User.query().findById(id)
       const ownedMedia = await user.$relatedQuery('ownedMedia')
       const consumedMedia = await user.$relatedQuery('consumedMedia')
+      const wantedMedia = await user.$relatedQuery('wantedMedia')
       const serializedOwnership = MediaSerializer.getTitleAndType(ownedMedia)
       const serializedConsumership = MediaSerializer.getTitleAndType(consumedMedia)
-      return res.status(200).json({ media: {ownerships: serializedOwnership, consumerships: serializedConsumership} })
+      const serializedWantship = MediaSerializer.getTitleAndType(wantedMedia)
+      return res.status(200).json({ media: {ownerships: serializedOwnership, consumerships: serializedConsumership, wantships: serializedWantship} })
     } catch (error) {
       console.log(error)
       return res.status(500).json({ errors: error })

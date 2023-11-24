@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import executeDelete from "../../services/deleteMedia.js"
 import setOwnership from "../../services/setOwnership.js"
 import setConsumership from "../../services/setConsumership.js"
+import setWantship from "../../services/setWantship.js"
 
 const MediaShow = ({ user }) => {
     const [media, setMedia] = useState({
@@ -71,6 +72,12 @@ const MediaShow = ({ user }) => {
         return <li key={tag} className={tagName}>{tag}</li>
     })
 
+    const wantMedia = (event) => {
+        event.preventDefault()
+        setWantship(id)
+        setShouldRedirect(true)
+    }
+
     const ownMedia = (event) => {
         event.preventDefault()
         setOwnership(id, user.id)
@@ -89,6 +96,15 @@ const MediaShow = ({ user }) => {
 
     let memberButtons = []
     if (user) {
+        if (media.isWanted) {
+            memberButtons.push(
+                    <button key="wanted" className="button" onClick={wantMedia}>Mark as Don't Want</button>
+            )
+        } else {
+            memberButtons.push(
+                <button key="wanted" className="button" onClick={wantMedia}>Mark as Want</button>
+            )
+        }
         if (media.isOwned) {
             memberButtons.push(
                     <button key="owned" className="button" onClick={ownMedia}>Mark as Unowned</button>
