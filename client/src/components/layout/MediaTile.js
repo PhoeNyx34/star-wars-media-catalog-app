@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import executeDelete from "../../services/deleteMedia.js"
 import setOwnership from "../../services/setOwnership.js"
@@ -7,7 +9,7 @@ import setConsumership from "../../services/setConsumership.js"
 import setWantship from "../../services/setWantship.js"
 
 const MediaTile = ({ item, user }) => {
-    const { id, title, cover_image, isOwned, isConsumed, isWanted } = item
+    const { id, title, cover_image } = item
     const [shouldRedirect, setShouldRedirect] = useState(false)
 
     const wantMedia = (event) => {
