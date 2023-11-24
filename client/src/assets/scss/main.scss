@@ -100,6 +100,11 @@ body {
   padding-top: 15px;
 }
 
+.tile-member-buttons {
+  list-style-type: none;
+  max-width: 200px
+}
+
 .media-show-container {
   color: #193665;
   margin: auto;
@@ -156,6 +161,15 @@ body {
   background-color: #FFD700;
   width: 125px;
   color: #071018;
+}
+
+.user-buttons {
+  margin-top: 50px;
+}
+
+.show-member-buttons {
+  list-style-type: none;
+  max-width: 500px;
 }
 
 .non-media-page {

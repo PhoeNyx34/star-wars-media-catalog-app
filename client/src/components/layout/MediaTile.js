@@ -30,35 +30,15 @@ const MediaTile = ({ item, user }) => {
         location.href="/"
     }
 
-    let memberButtons = []
+    let memberButtons
     if (user) {
-        if (isWanted) {
-            memberButtons.push(
-                    <button key="wanted" className="button" onClick={wantMedia}>Mark as Don't Want</button>
-            )
-        } else {
-            memberButtons.push(
-                <button key="wanted" className="button" onClick={wantMedia}>Mark as Want</button>
-            )
-        }
-        if (isOwned) {
-            memberButtons.push(
-                    <button key="owned" className="button" onClick={ownMedia}>Mark as Unowned</button>
-            )
-        } else {
-            memberButtons.push(
-                <button key="owned" className="button" onClick={ownMedia}>Mark as Owned</button>
-            )
-        }
-        if (isConsumed) {
-            memberButtons.push(
-                    <button key="consumed" className="button" onClick={consumeMedia}>Mark as Unwatched</button>
-            )
-        } else {
-            memberButtons.push(
-                <button key="consumed" className="button" onClick={consumeMedia}>Mark as Watched</button>
-            )
-        }
+        memberButtons = (
+                <div className="tile-member-buttons grid-x">
+                    <li key="wanted" className="cell small-3">Want<button className="button member-option" onClick={wantMedia}></button></li>
+                    <li key="owned" className="cell small-3">Own<button className="button member-option" onClick={ownMedia}></button></li>
+                    <li key="consumed" className="cell small-3">Watched<button className="button member-option" onClick={consumeMedia}></button></li>
+                </div>  
+        )
     }
 
     const deleteMedia = (event) => {
@@ -76,14 +56,16 @@ const MediaTile = ({ item, user }) => {
     }
 
     return (
-        <Link to={`/${id}`} className="cell small-3 media-tile">
-            <img src={cover_image} className="media-tile-cover"/>
-            <p className="media-tile-title">{title}</p>
-            {adminButtons}
-            <div className="tile-member-buttons">
+        <div className="cell small-3 media-tile">
+            <Link to={`/${id}`}>
+                <img src={cover_image} className="media-tile-cover"/>
+                <p className="media-tile-title">{title}</p>
+            </Link>
+            <div className="grid-x">
                 {memberButtons}
+                {adminButtons}
             </div>
-        </Link> 
+        </div> 
     )  
 } 
 

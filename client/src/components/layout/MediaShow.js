@@ -94,35 +94,15 @@ const MediaShow = ({ user }) => {
         location.href=`/${id}`
     }
 
-    let memberButtons = []
+    let memberButtons
     if (user) {
-        if (media.isWanted) {
-            memberButtons.push(
-                    <button key="wanted" className="button" onClick={wantMedia}>Mark as Don't Want</button>
-            )
-        } else {
-            memberButtons.push(
-                <button key="wanted" className="button" onClick={wantMedia}>Mark as Want</button>
-            )
-        }
-        if (media.isOwned) {
-            memberButtons.push(
-                    <button key="owned" className="button" onClick={ownMedia}>Mark as Unowned</button>
-            )
-        } else {
-            memberButtons.push(
-                <button key="owned" className="button" onClick={ownMedia}>Mark as Owned</button>
-            )
-        }
-        if (media.isConsumed) {
-            memberButtons.push(
-                    <button key="consumed" className="button" onClick={consumeMedia}>Mark as Unwatched</button>
-            )
-        } else {
-            memberButtons.push(
-                <button key="consumed" className="button" onClick={consumeMedia}>Mark as Watched</button>
-            )
-        }
+        memberButtons = (
+            <div className="show-member-buttons grid-x">
+                <li key="wanted" className="cell small-3">Want<button className="button member-option" onClick={wantMedia}></button></li>
+                <li key="owned" className="cell small-3">Own<button className="button member-option" onClick={ownMedia}></button></li>
+                <li key="consumed" className="cell small-3">Watched<button className="button member-option" onClick={consumeMedia}></button></li>
+            </div>  
+        )
     }
 
     const deleteMedia = (event) => {
@@ -133,7 +113,7 @@ const MediaShow = ({ user }) => {
     let adminButtons
     if (user && user.type === "admin") {
         adminButtons = (
-            <div className="show-admin-buttons">
+            <div className="admin-buttons">
                 <button className="button" onClick={deleteMedia}>Delete</button>
             </div>
         )
@@ -150,8 +130,10 @@ const MediaShow = ({ user }) => {
                 <p>Audience rating: {media.rating}</p>
                 <p>{media.description}</p>
                 <ul className="tag-bubbles">{tagBubbles}</ul>
-                {adminButtons}
-                {memberButtons}
+                <div className="grid-x user-buttons">
+                    <div className="cell large-8">{memberButtons}</div>
+                    <div className="cell small-4">{adminButtons}</div>
+                </div>
             </div>
         </div>
     )
