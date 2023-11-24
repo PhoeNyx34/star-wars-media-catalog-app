@@ -1,6 +1,7 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+
 // place global css here
 *,
 *::before,
@@ -169,7 +170,7 @@ body {
   }
 }
 
-.media-list {
+.user-account-media-lists {
   margin: 75px 25px 0px 0px; 
 
   ul {

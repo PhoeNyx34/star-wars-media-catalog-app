@@ -8,7 +8,7 @@ const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
     email: "",
     password: "",
-    passwordConfirmation: "",
+    passwordConfirmation: ""
   });
 
   const [errors, setErrors] = useState({});
