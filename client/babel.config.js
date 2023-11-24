@@ -32,6 +32,7 @@ module.exports = function (api) {
       ],
     ].filter(Boolean),
     plugins: [
+      'macros',
       require("@babel/plugin-syntax-dynamic-import").default,
       require("@babel/plugin-transform-destructuring").default,
       require("@babel/plugin-transform-class-properties").default,

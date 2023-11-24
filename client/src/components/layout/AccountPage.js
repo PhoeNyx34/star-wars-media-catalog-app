@@ -5,6 +5,7 @@ const AccountPage = ({ user }) => {
     const { id, email, type } = user
     const [ownedMedia, setOwnedMedia] = useState([])
     const [consumedMedia, setConsumedMedia] = useState([])
+    const [wantedMedia, setWantedMedia] = useState([])
 
     const getUserMedia = async () => {
         try {
@@ -17,6 +18,7 @@ const AccountPage = ({ user }) => {
             const body = await response.json()
             setOwnedMedia(body.media.ownerships)
             setConsumedMedia(body.media.consumerships)
+            setWantedMedia(body.media.wantships)
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
@@ -36,6 +38,11 @@ const AccountPage = ({ user }) => {
             <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &mdash; {media.type}</li>
         )
     })
+    const wantedMediaList = wantedMedia.map(media => {
+        return (
+            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &mdash; {media.type}</li>
+        )
+    })
 
     let adminButtons
     if (type === "admin") {
@@ -50,13 +57,19 @@ const AccountPage = ({ user }) => {
             <p>Email: {email}</p>
             {adminButtons}
             <div className="grid-x user-account-media-lists">
-                <div className="cell medium-6">
+                <div className="cell small-4">
+                    <h3>Media I Want</h3>
+                    <ul>
+                        {wantedMediaList}
+                    </ul>
+                </div>
+                <div className="cell small-4">
                     <h3>Media I Own</h3>
                     <ul>
                         {ownedMediaList}
                     </ul>
                 </div>
-                <div className="cell medium-6">
+                <div className="cell small-4">
                     <h3>Media I've Consumed</h3>
                     <ul>
                         {consumedMediaList}

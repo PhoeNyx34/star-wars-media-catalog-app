@@ -100,10 +100,16 @@ body {
   padding-top: 15px;
 }
 
+.tile-member-buttons {
+  list-style-type: none;
+  max-width: 200px
+}
+
 .media-show-container {
   color: #193665;
   margin: auto;
   margin-top: 100px;
+  margin-bottom: 100px;
   width: 69%;
   background-color: #F9FEFA;
   border: 2px solid #193665;
@@ -158,9 +164,17 @@ body {
   color: #071018;
 }
 
+.user-buttons {
+  margin-top: 50px;
+}
+
+.show-member-buttons {
+  list-style-type: none;
+  max-width: 500px;
+}
+
 .non-media-page {
-  width: 69%;
-  max-width: 700px;
+  width: 79%;
   margin: auto;
   margin-top: 50px;
   color: #193665;
@@ -180,6 +194,10 @@ body {
 
 .media-title {
   font-weight: bold;
+}
+
+form {
+  max-width: 700px;
 }
 
 legend, label {
