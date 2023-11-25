@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react"
 
 import MediaTile from "./MediaTile"
+import searchMedia from "../../services/getSearchResults"
 
 const MediaIndex = ({ user }) => { 
     const [media, setMedia] = useState([])
+    const [searchQuery, setSearchQuery] = useState('')
+    const [searchedMedia, setSearchedMedia] = useState([])
 
     const getMedia = async () => {
         try {
@@ -24,16 +27,52 @@ const MediaIndex = ({ user }) => {
         getMedia()
     },[])
 
-    const mediaTiles = media.map(item => {
-        return (
-            <MediaTile 
-                key={item.id}
-                item={item}
-                user={user}
-            />
-        )
-    })
-    
+    const handleInputChange = (event) => {
+
+        setSearchQuery(event.currentTarget.value)
+    }
+
+    const submitSearch = (event) => {
+        event.preventDefault()
+        let query = searchQuery.split(' ')
+        const searchedMedia = searchMedia(media, query)
+        setSearchedMedia(searchedMedia)
+    }
+
+    const refreshPage = (event) => {
+        location.href="/"
+    }
+
+    const scrollToTop = (event) => {
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+
+    let mediaTiles
+    if (searchedMedia.length > 0) {
+        mediaTiles = searchedMedia.map(item => {
+            return (
+                <MediaTile 
+                    key={item.id}
+                    item={item}
+                    user={user}
+                />
+            )
+        })
+    } else {
+        mediaTiles = media.map(item => {
+            return (
+                <MediaTile 
+                    key={item.id}
+                    item={item}
+                    user={user}
+                />
+            )
+        })
+    }
+
     return (
         <>
             <div id="home-header">
@@ -42,6 +81,14 @@ const MediaIndex = ({ user }) => {
                     <h3>an interactive Star Wars media catalog</h3>
                 </div>
             </div>
+            <div id="search-and-filter">
+                <div id="search-section" className="grid-x">
+                    <button className="cell small-1 button" onClick={submitSearch}>Search</button>
+                    <input id="site-search" type="search" placeholder="Enter search query" className="cell medium-7" onChange={handleInputChange}/>
+                    <button className="cell small-1 button" onClick={refreshPage}>Reset Page</button>
+                </div>
+            </div>
+            <button className="to-top button" onClick={scrollToTop}>Go To Top</button>
             <div id="home-media-index" className="grid-x grid-margin-x">
                 {mediaTiles}
             </div>

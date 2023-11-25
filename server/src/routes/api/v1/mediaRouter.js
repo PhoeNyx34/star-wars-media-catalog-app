@@ -5,6 +5,7 @@ import MediaSerializer from "../../../serializers/MediaSerializer.js"
 import objection from "objection"
 const { ValidationError } = objection 
 import cleanUserInput from "../../services/cleanUserInput.js"
+import SearchAndFilterSerializer from "../../../serializers/SearchAndFilterSerializer.js"
 
 const mediaRouter = new express.Router()
 
@@ -15,9 +16,9 @@ mediaRouter.get("/index-page", async (req, res) => {
         const media = await Media.query()
         let serializedMedia
         if (user) {
-            serializedMedia = await MediaSerializer.getCoverAndTitle(media, user.id)
+            serializedMedia = await MediaSerializer.getAllMedia(media, user.id)
         } else {
-            serializedMedia = await MediaSerializer.getCoverAndTitle(media)
+            serializedMedia = await MediaSerializer.getAllMedia(media)
         }
         return res.status(200).json({ media: serializedMedia })
     } catch (error) {

@@ -1,4 +1,5 @@
 import RoleSerializer from "./RoleSerializer.js"
+import SearchAndFilterSerializer from "./SearchAndFilterSerializer.js"
 
 class MediaSerializer {
     static async getAllInfo(media, userId) {
@@ -31,8 +32,8 @@ class MediaSerializer {
         return serializedMedia
     }
     
-    static async getCoverAndTitle(media, userId) {
-        const allowedAttributes = ["id", "title", "cover_image"]
+    static async getAllMedia(media, userId) {
+        const allowedAttributes = ["id", "type", "title", "cover_image", "release_date", "description", "fictional_year_start", "fictional_year_end", "canon", "animated", "lego", "rating"]
         
         if (userId) {
             const serializedMedia = await Promise.all(media.map(async (item) => {
@@ -40,6 +41,9 @@ class MediaSerializer {
                 for (const attribute of allowedAttributes) {
                     serializedItem[attribute] = item[attribute]
                 }
+
+                let searchArray = await SearchAndFilterSerializer.getSearchableArray(item)
+                serializedItem.search = searchArray
     
                 const isOwned = await item.$relatedQuery('ownedBy').where('userId', userId)
                 if (isOwned.length > 0) {
@@ -58,14 +62,17 @@ class MediaSerializer {
             }))
             return serializedMedia
         } else {
-            const serializedMedia = media.map(item => {
+            const serializedMedia = await Promise.all(media.map(async (item) => {
                 let serializedItem = {}
                 for (const attribute of allowedAttributes) {
                     serializedItem[attribute] = item[attribute]
                 }
+
+                let searchArray = await SearchAndFilterSerializer.getSearchableArray(item)
+                serializedItem.search = searchArray
     
                 return serializedItem
-            })
+            }))
             return serializedMedia
         }
     }

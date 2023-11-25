@@ -17,6 +17,23 @@ class RoleSerializer {
         }))
         return serializedRoles
     }
+
+    static async getContributorsForSearch(roles) {
+        const allowedAttributes = ["role"]
+        const serializedRoles = await Promise.all(roles.map(async (role) => {
+            let serializedRole = {}
+            for (const attribute of allowedAttributes) {
+                serializedRole[attribute] = role[attribute]
+            }
+    
+            const contributor = await role.$relatedQuery("contributor")
+            const serializedContributor = ContributorSerializer.getName(contributor)
+            serializedRole.contributor = serializedContributor.name
+    
+            return serializedRole
+        }))
+        return serializedRoles
+    }
 }
 
 export default RoleSerializer
