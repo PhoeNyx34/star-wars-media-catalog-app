@@ -28,7 +28,6 @@ const MediaIndex = ({ user }) => {
     },[])
 
     const handleInputChange = (event) => {
-
         setSearchQuery(event.currentTarget.value)
     }
 

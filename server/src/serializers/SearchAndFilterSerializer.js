@@ -8,12 +8,10 @@ class SearchAndFilterSerializer {
             serializedItem[attribute] = item[attribute]
         }
         
-        // add related contributors
         const roles = await item.$relatedQuery("behindSceneRoles")
         const serializedRoles = await RoleSerializer.getContributorsForSearch(roles)
         serializedItem.behindSceneRoles = serializedRoles
 
-        // set all needed values for searching into array of strings
         let searchableValues = []
         for (const [key, value] of Object.entries(serializedItem)) {
             if (typeof value === 'string') {
@@ -56,23 +54,18 @@ class SearchAndFilterSerializer {
             }
         }
 
-        // take each string and split into words
         const searchableWordString = searchableValues.map(value => {
             const splitValues = value.toString().split(' ')
             return splitValues
         })
 
-        // conmbine all strings into one
         let combinedString = []
         for (let i = 0; i < searchableWordString.length; i++) {
             combinedString += searchableWordString[i].concat(searchableWordString[i+1]) + ","
         }
         const splitStrings = combinedString.split(',')
-
-        // remove duplicate words
         const searchArray = [...new Set(splitStrings)].sort()
 
-        // return leftover words
         return searchArray
     }
 }

@@ -33,7 +33,7 @@ class MediaSerializer {
     }
     
     static async getAllMedia(media, userId) {
-        const allowedAttributes = ["id", "type", "title", "cover_image", "release_date", "description", "fictional_year_start", "fictional_year_end", "canon", "animated", "lego", "rating"]
+        const allowedAttributes = ["id", "title", "cover_image"]
         
         if (userId) {
             const serializedMedia = await Promise.all(media.map(async (item) => {
