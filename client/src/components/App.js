@@ -12,6 +12,7 @@ import MediaIndex from "./layout/MediaIndex"
 import MediaShow from "./layout/MediaShow";
 import AccountPage from "./layout/AccountPage";
 import NewMediaForm from "./layout/NewMediaForm";
+import AboutPage from "./layout/AboutPage";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -35,6 +36,7 @@ const App = (props) => {
         <Route exact path="/" render={(props) => {
           return <MediaIndex user={currentUser} {...props}/>
         }}/>
+        <Route exact path="/about" component={AboutPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <AuthenticatedRoute exact path="/users/account" component={AccountPage} user={currentUser} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
