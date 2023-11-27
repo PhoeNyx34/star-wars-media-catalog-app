@@ -53,9 +53,11 @@ const AccountPage = ({ user }) => {
     
     return (
         <div className="non-media-page">
-            <h1>Account</h1>
-            <p>Email: {email}</p>
-            {adminButtons}
+            <div className="non-media-page-top">
+                <h1>Account</h1>
+                <p>Email: {email}</p>
+                {adminButtons}
+            </div>
             <div className="grid-x user-account-media-lists">
                 <div className="cell small-4">
                     <h3>Media I Want</h3>

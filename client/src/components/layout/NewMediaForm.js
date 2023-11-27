@@ -85,7 +85,7 @@ const NewMediaForm = ({ user }) => {
     } 
 
     return (
-        <div className="non-media-page">
+        <div className="form-page">
             <h1>New Media</h1>
             <ErrorList errors={serverErrors}/>
             <form onSubmit={handleSubmit}>

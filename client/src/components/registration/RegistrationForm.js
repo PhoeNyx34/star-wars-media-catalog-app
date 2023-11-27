@@ -106,7 +106,7 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="grid-container non-media-page">
+    <div className="grid-container form-page">
       <h1>Register</h1>
 	    <ErrorList errors={serverErrors} />
       <form onSubmit={onSubmit}>

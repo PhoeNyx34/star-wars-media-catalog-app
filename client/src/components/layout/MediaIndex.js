@@ -36,6 +36,9 @@ const MediaIndex = ({ user }) => {
         let query = searchQuery.split(' ')
         const searchedMedia = searchMedia(media, query)
         setSearchedMedia(searchedMedia)
+        if (searchedMedia.length === 0) {
+            window.alert("Your search query did not return any results.")
+        }
     }
 
     const refreshPage = (event) => {
@@ -83,7 +86,7 @@ const MediaIndex = ({ user }) => {
             <div id="search-and-filter">
                 <div id="search-section" className="grid-x">
                     <button className="cell small-1 button" onClick={submitSearch}>Search</button>
-                    <input id="site-search" type="search" placeholder="Enter search query" className="cell medium-7" onChange={handleInputChange}/>
+                    <input id="site-search" type="search" placeholder="Enter search query" className="cell large-9" onChange={handleInputChange}/>
                     <button className="cell small-1 button" onClick={refreshPage}>Reset Page</button>
                 </div>
             </div>

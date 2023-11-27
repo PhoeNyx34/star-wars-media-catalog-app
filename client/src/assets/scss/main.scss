@@ -35,10 +35,15 @@ body {
   ul {
     background-color: #193665;
     color: #F9FEFA;
+    align-items: end;
   }
 
   .nav-option {
     color: #F9FEFA;
+  }
+
+  .menu-text {
+    font-size: larger;
   }
 }
 
@@ -85,6 +90,7 @@ body {
   width: 90%;
   margin: auto;
   padding-top: 17px;
+  
 
   input {
     margin-left: 20px;
@@ -214,11 +220,26 @@ body {
 .non-media-page {
   width: 79%;
   margin: auto;
-  margin-top: 50px;
+  margin-bottom: 0px;
+  padding: 50px;
   color: #193665;
+  background-color: #F9FEFA;
+  border: 1px solid #193665;
+  border-top: none;
 
-  h1 {
+  .non-media-page-top {
+    margin: auto;
     margin-bottom: 25px;
+    max-width: 700px;
+    
+    h1 {
+      text-align: center;
+    }
+  }
+
+  .cell {
+    margin-top: 100px; 
+    padding: 0px 25px 0px 25px;
   }
 }
 
@@ -234,8 +255,16 @@ body {
   font-weight: bold;
 }
 
-form {
+.form-page {
+  width: 79%;
   max-width: 700px;
+  margin: auto;
+  color: #193665;
+  
+  h1 {
+    text-align: center;
+    padding: 50px 0px;
+  }
 }
 
 legend, label {
