@@ -36,6 +36,9 @@ const MediaIndex = ({ user }) => {
         let query = searchQuery.split(' ')
         const searchedMedia = searchMedia(media, query)
         setSearchedMedia(searchedMedia)
+        if (searchedMedia.length === 0) {
+            window.alert("Your search query did not return any results.")
+        }
     }
 
     const refreshPage = (event) => {
