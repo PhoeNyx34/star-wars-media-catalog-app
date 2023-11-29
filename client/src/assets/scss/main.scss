@@ -2,6 +2,9 @@
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
 
+@import url('https://fonts.cdnfonts.com/css/sf-distant-galaxy');
+@import url('https://fonts.cdnfonts.com/css/noto-sans-chorasmian');
+
 // place global css here
 *,
 *::before,
@@ -16,6 +19,11 @@
 
 body {
   background-color: #E3F1FB;
+  font-family: "Noto Sans Chorasmian";
+}
+
+h1 {
+  font-family: "SF Distant Galaxy", "Nova Square", sans-serif;
 }
 
 .button {
@@ -42,8 +50,11 @@ body {
     color: #F9FEFA;
   }
 
-  .menu-text {
-    font-size: larger;
+  .menu-title {
+    font-family: "SF Distant Galaxy Alternate", "Nova Square", sans-serif;
+    font-size: x-large;
+    margin-left: 20px;
+    margin-right: 15px;
   }
 }
 
@@ -68,14 +79,20 @@ body {
   text-shadow: #F9FEFA 4px 0 10px;
 
   h1 {
-    font-weight: 200%;
-    font-size: 400%;
+    font-family: "SF Distant Galaxy Alternate", "Nova Square", sans-serif;
+    font-size: 600%;
     font-size-adjust: 0.5;
+    margin-bottom: -1.5rem;
   }
 
   h3 {
-    font-size: 250%;
-    font-size-adjust: 0.5;
+    font-family: "Noto Sans Chorasmian";
+  }
+
+  p {
+    font-family: "Noto Sans Chorasmian";
+    font-size: 1.5em;
+    margin-top: 50px;
   }
 }
 
@@ -126,14 +143,14 @@ body {
 .media-tile {
   margin: 20px;
   background-color: #F9FEFA;
-  border: 2px solid #193665;
-  box-shadow: 5px 3px 5px #193665;
+  box-shadow: 5px 3px 5px rgba(25,54,101,50%);
   border-radius: 5px;
   max-width: 300px;
 }
 
 .media-tile-cover {
   margin: auto;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .media-tile-title {
@@ -156,9 +173,12 @@ body {
   margin-bottom: 100px;
   width: 69%;
   background-color: #F9FEFA;
-  border: 2px solid #193665;
   border-radius: 10px;
-  box-shadow: 10px 8px 5px #193665;
+  box-shadow: 10px 8px 5px rgba(25,54,101,50%);
+
+  img {
+    border-radius: 10px 0px 0px 10px;
+  }
 }
 
 .media-show-details {

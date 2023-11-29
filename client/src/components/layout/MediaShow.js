@@ -96,11 +96,19 @@ const MediaShow = ({ user }) => {
 
     let memberButtons
     if (user) {
+        // let memberButtons = []
+        // check whether user wants media
+
+        // check whether user owns media
+        // check whether user has consumed media
+
+
+
         memberButtons = (
             <div className="show-member-buttons grid-x">
-                <li key="wanted" className="cell small-3">Want<button className="button member-option" onClick={wantMedia}></button></li>
-                <li key="owned" className="cell small-3">Own<button className="button member-option" onClick={ownMedia}></button></li>
-                <li key="consumed" className="cell small-3">Watched<button className="button member-option" onClick={consumeMedia}></button></li>
+                <li key="wanted" className="cell small-3">Want<i className="member-option fa-solid fa-square-plus" onClick={wantMedia}></i></li>
+                <li key="owned" className="cell small-3">Own<i className="member-option fa-solid fa-square-plus" onClick={ownMedia}></i></li>
+                <li key="consumed" className="cell small-3">Watched<i className="member-option fa-solid fa-square-plus" onClick={consumeMedia}></i></li>
             </div>  
         )
     }
