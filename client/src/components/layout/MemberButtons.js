@@ -9,7 +9,6 @@ const MemberButtons = ({ media, user }) => {
     const {id, isWanted, isOwned, isConsumed} = media
     const [shouldRedirect, setShouldRedirect] = useState(false)
  
-
     const wantMedia = (event) => {
         event.preventDefault()
         setWantship(id)
