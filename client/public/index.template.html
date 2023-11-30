@@ -3,6 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nova+Square">
+    <script src="https://kit.fontawesome.com/6aa604a398.js" crossorigin="anonymous"></script>
+    <title>Holocron | Star Wars media catalog & tracker</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <script src="/dist/bundle.js"></script>
+    <script>
+      window.onload = function () {
+        var span = document.createElement('span');
+      
+        span.className = 'fa-solid';
+        span.style.display = 'none';
+        document.body.insertBefore(span, document.body.firstChild);
+        
+        alert(window.getComputedStyle(span, null).getPropertyValue('font-family'));
+          
+        document.body.removeChild(span);
+      };
+      </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Engage</title>
   </head>
 
@@ -12,4 +44,4 @@
       You need to enable JavaScript to run this app.
     </noscript>
   </body>
-</html>
+</html> -->
