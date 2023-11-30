@@ -30,17 +30,17 @@ const AccountPage = ({ user }) => {
 
     const ownedMediaList = ownedMedia.map(media => {
         return (
-            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &mdash; {media.type}</li>
+            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &ndash; {media.type}</li>
         )
     })
     const consumedMediaList = consumedMedia.map(media => {
         return (
-            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &mdash; {media.type}</li>
+            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &ndash; {media.type}</li>
         )
     })
     const wantedMediaList = wantedMedia.map(media => {
         return (
-            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &mdash; {media.type}</li>
+            <li key={media.id}><Link to={`../${media.id}`} className="media-title">{media.title}</Link> &ndash; {media.type}</li>
         )
     })
 
@@ -55,7 +55,7 @@ const AccountPage = ({ user }) => {
         <div className="non-media-page">
             <div className="non-media-page-top">
                 <h1>Account</h1>
-                <p>Email: {email}</p>
+                <p><strong>Email:</strong> {email}</p>
                 {adminButtons}
             </div>
             <div className="grid-x user-account-media-lists">
