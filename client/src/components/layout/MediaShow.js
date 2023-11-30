@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 import executeDelete from "../../services/deleteMedia.js"
-import setOwnership from "../../services/setOwnership.js"
-import setConsumership from "../../services/setConsumership.js"
-import setWantship from "../../services/setWantship.js"
+import MemberButtons from "./MemberButtons.js"
 
 const MediaShow = ({ user }) => {
     const [media, setMedia] = useState({
         behindSceneRoles: [],
     })
-    const [shouldRedirect, setShouldRedirect] = useState(false)
     const { id } = useParams()
     
     const getMedia = async () => {
@@ -72,45 +69,9 @@ const MediaShow = ({ user }) => {
         return <li key={tag} className={tagName}>{tag}</li>
     })
 
-    const wantMedia = (event) => {
-        event.preventDefault()
-        setWantship(id)
-        setShouldRedirect(true)
-    }
-
-    const ownMedia = (event) => {
-        event.preventDefault()
-        setOwnership(id, user.id)
-        setShouldRedirect(true)
-    }
-
-    const consumeMedia = (event) => {
-        event.preventDefault()
-        setConsumership(id)
-        setShouldRedirect(true)
-    }
-
-    if (shouldRedirect) {
-        location.href=`/${id}`
-    }
-
     let memberButtons
     if (user) {
-        // let memberButtons = []
-        // check whether user wants media
-
-        // check whether user owns media
-        // check whether user has consumed media
-
-
-
-        memberButtons = (
-            <div className="show-member-buttons grid-x">
-                <li key="wanted" className="cell small-3">Want<i className="member-option fa-solid fa-square-plus" onClick={wantMedia}></i></li>
-                <li key="owned" className="cell small-3">Own<i className="member-option fa-solid fa-square-plus" onClick={ownMedia}></i></li>
-                <li key="consumed" className="cell small-3">Watched<i className="member-option fa-solid fa-square-plus" onClick={consumeMedia}></i></li>
-            </div>  
-        )
+        memberButtons = <MemberButtons media={media} user={user}/>
     }
 
     const deleteMedia = (event) => {
@@ -139,8 +100,11 @@ const MediaShow = ({ user }) => {
                 <p>{media.description}</p>
                 <ul className="tag-bubbles">{tagBubbles}</ul>
                 <div className="grid-x user-buttons">
-                    <div className="cell large-8">{memberButtons}</div>
-                    <div className="cell small-4">{adminButtons}</div>
+                    <h6 className="cell large-10">In my lists:</h6>
+                    <div className="show-member-buttons cell large-10">
+                        {memberButtons}
+                    </div>
+                    <div className="cell small-2">{adminButtons}</div>
                 </div>
             </div>
         </div>
