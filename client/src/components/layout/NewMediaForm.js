@@ -115,7 +115,7 @@ const NewMediaForm = ({ user }) => {
                     </label>
 
                     <label className="cell medium-6">
-                        Rating:
+                        <span className="required">*</span>Rating:
                         <input type="text" name="rating" value={newMedia.rating} onChange={handleInputChange} />
                     </label>
                 </div>
