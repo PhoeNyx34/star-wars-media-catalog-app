@@ -4,14 +4,14 @@
 <p>The application uses React/Express to render a web app that allows users to view existing Star Wars media, including movies, TV shows, books, comics, and video games. Users may search and filter by various parameters (e.g., canon or legend, media type, primary characters, time period,  target audience age). When signed in, users may rate media and also mark whether media is owned, want to watch, watched, etc.</p>
 
 # Installation
-<p>After cloning the repository, run the code below whil in the root directory to install dependencies and create the database.</p>
+<p>After cloning the repository, run the code below while in the root directory to install dependencies and create the database.</p>
 
 ```Node
 $ yarn install
 $ createdb star-wars-media-catalog-app_development
 ```
 
-<p>Create a directory for the app in your desired location, cd into the new directory, and run the following code.</p>
+<p>Create a directory for the app in your desired location, cd into the new directory, and run the following code:</p>
 
 ```Node
 $ cd server
