@@ -26,11 +26,7 @@ $ yarn run dev
 <img alt="Screenshot of Holocron app home page" src="https://github.com/PhoeNyx34/star-wars-media-catalog-app/assets/145715326/63caf28b-bc82-4d29-90d2-6d2fe39bdd54">
 
 # Usage
-<p>The app seeds with 2 default users:</p>
-<ul>
-    <li>Email: starwarsnerd@test.com, Password: 123, Type: admin</li>
-    <li>Email: glup.shitto@test.com, Password: 123, Type: member</li>
-</ul>
+<p>The app seeds with 2 default users: an admin and a member.</p>
 <p>When logged in as member, you can browse the site, use search and filter, mark media as want, own, and/or watched, and view lists of marked media on their account page.</p>
 <p>When logged in as admin, you can do everything a member can plus add, edit, and delete media in the database. An 'Add new media' button is available on the account page; edit and delete can be performed from any media tile or show page.</p>
 
