@@ -9,7 +9,6 @@ const MediaIndex = ({ user }) => {
     const [media, setMedia] = useState([])
     const [searchResults, setSearchResults] = useState([])
     const [filterResults, setFilterResults] = useState([])
-    // const { isExpanded } = useCollapse()
 
     const getMedia = async () => {
         try {
@@ -36,6 +35,10 @@ const MediaIndex = ({ user }) => {
             behavior: "smooth"
         })
     }
+    
+    console.log("media", media)
+    console.log("search", searchResults)
+    console.log("filter", filterResults)
 
     let mediaTiles
     if (searchResults.length > 0) {
