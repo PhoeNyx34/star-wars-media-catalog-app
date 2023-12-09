@@ -40,7 +40,7 @@ const FilterSection = ({media, setFilterResults}) => {
             const itemEntries = Object.entries(item)    
             const matches = []
             for (const [key,value] of Object.entries(filterParams)) {
-                if (itemEntries.find(entry => entry[0] === key && entry[1] == value)) {
+                if (itemEntries.find(entry => entry[0] === key && entry[1] === value)) {
                     matches.push(true)
                 } else {
                     matches.push(false)
