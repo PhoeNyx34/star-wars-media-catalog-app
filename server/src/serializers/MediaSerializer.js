@@ -42,6 +42,10 @@ class MediaSerializer {
                     serializedItem[attribute] = item[attribute]
                 }
 
+                let roles = await item.$relatedQuery('behindSceneRoles')
+                const serializedRoles = await RoleSerializer.getNamesForFilter(roles)
+                serializedItem.behindSceneRoles = serializedRoles
+
                 let searchArray = await SearchAndFilterSerializer.getSearchableArray(item)
                 serializedItem.search = searchArray
     
@@ -70,6 +74,10 @@ class MediaSerializer {
                 for (const attribute of allowedAttributes) {
                     serializedItem[attribute] = item[attribute]
                 }
+
+                let roles = await item.$relatedQuery('behindSceneRoles')
+                const serializedRoles = await RoleSerializer.getNamesForFilter(roles)
+                serializedItem.behindSceneRoles = serializedRoles
 
                 let searchArray = await SearchAndFilterSerializer.getSearchableArray(item)
                 serializedItem.search = searchArray

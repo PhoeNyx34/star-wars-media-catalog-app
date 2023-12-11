@@ -78,6 +78,14 @@ const FilterSection = ({media, setFilterResults}) => {
         return <option key={era} value={era}>{era}</option>
     })
 
+    const allContributorsArrays = media.map(media => {
+        return media.behindSceneRoles
+    })
+    const allContributors = [...new Set([].concat(...allContributorsArrays))]
+    const contributorOptions = allContributors.map(person => {
+        return <option key={person} value={person}>{person}</option>
+    })
+
     return (
         <div className="filter-section">
             <div className="collapsible-header" {...getToggleProps()}>Filter</div>
@@ -125,6 +133,14 @@ const FilterSection = ({media, setFilterResults}) => {
                             <select id="era" name="era" onChange={handleInputChange}>
                                 <option>-- Please select an option --</option>
                                 {eraOptions}
+                            </select>
+                        </div>
+
+                        <div className="cell small-3">
+                            <label htmlFor="contributors">Primary Contributors:</label>
+                            <select id="contributors" name="behindSceneRoles" onChange={handleInputChange}>
+                                <option>-- Please select an option --</option>
+                                {contributorOptions}
                             </select>
                         </div>
 
