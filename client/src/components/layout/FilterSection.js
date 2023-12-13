@@ -32,7 +32,6 @@ const FilterSection = ({media, setFilterResults}) => {
         }
     }
 
-    // onSubmit, check media for matching all provided params
     const submitFilter = (event) => {
         event.preventDefault()
         cleanFilterInput()
@@ -40,6 +39,12 @@ const FilterSection = ({media, setFilterResults}) => {
             const itemEntries = Object.entries(item)    
             const matches = []
             for (const [key,value] of Object.entries(filterParams)) {
+                // if item value is array
+                if (itemEntries.find(entry => entry[0] === key && typeof entry[1] === 'object')) {
+                   // how to isolate entry and check for matching value?
+                }
+
+                // if item value is string/boolean
                 if (itemEntries.find(entry => entry[0] === key && entry[1] === value)) {
                     matches.push(true)
                 } else {
