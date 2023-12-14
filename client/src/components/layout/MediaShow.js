@@ -71,7 +71,14 @@ const MediaShow = ({ user }) => {
 
     let memberButtons
     if (user) {
-        memberButtons = <MemberButtons media={media} user={user}/>
+        memberButtons = (
+            <>
+                <h6 className="cell large-10">In my lists:</h6>
+                <div className="show-member-buttons cell large-10">
+                    <MemberButtons media={media} user={user}/>
+                </div>
+            </>
+        )
     }
 
     const deleteMedia = (event) => {
@@ -90,8 +97,8 @@ const MediaShow = ({ user }) => {
 
     return (
         <div className="media-show-container grid-x">
-            <img src={media.cover_image} className="cell medium-5 media-show-cover"/>
-            <div className="cell medium-7 media-show-details">
+            <img src={media.cover_image} className="cell small-12 medium-5 media-show-cover"/>
+            <div className="cell small-12 medium-7 media-show-details">
                 <h1>{media.title}</h1>
                 <p>Directed by: {directors.join(", ")}</p>
                 <p>Written by: {writers.join(", ")}</p>
@@ -100,10 +107,7 @@ const MediaShow = ({ user }) => {
                 <p>{media.description}</p>
                 <ul className="tag-bubbles">{tagBubbles}</ul>
                 <div className="grid-x user-buttons">
-                    <h6 className="cell large-10">In my lists:</h6>
-                    <div className="show-member-buttons cell large-10">
-                        {memberButtons}
-                    </div>
+                    {memberButtons}
                     <div className="cell small-2">{adminButtons}</div>
                 </div>
             </div>

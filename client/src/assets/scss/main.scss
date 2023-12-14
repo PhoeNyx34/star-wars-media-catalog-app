@@ -37,24 +37,134 @@ h1 {
   justify-content: space-around;
 }
 
-.top-bar {
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   background-color: #193665;
+  color: #F9FEFA;
+  height: 50px;
+  padding: 1em;
+}
 
-  ul {
-    background-color: #193665;
-    color: #F9FEFA;
-    align-items: end;
+.menu-title {
+  font-family: "SF Distant Galaxy Alternate", "Nova Square", sans-serif;
+  color: #F9FEFA;
+  text-shadow: #F9FEFA 1px 0 3px;
+  font-size: x-large;
+  margin-left: 20px;
+}
+
+.nav-option {
+  color: #F9FEFA;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.menu-button-container {
+  display: none !important;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex !important;
   }
-
-  .nav-option {
-    color: #F9FEFA;
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #193665;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    background-color: #E3F1FB;
 
-  .menu-title {
-    font-family: "SF Distant Galaxy Alternate", "Nova Square", sans-serif;
-    font-size: x-large;
-    margin-left: 20px;
-    margin-right: 15px;
+    .nav-option {
+      color: #193665;
+    }
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #193665;
   }
 }
 
@@ -62,9 +172,10 @@ h1 {
   background-image: url(./../images/index-page-hero-banner_1600x700.jpg);
   background-attachment: fixed;
   background-color: #193665;
+  width: 100%;
   background-repeat: no-repeat;
   background-position-x: center;
-  height: 575px;
+  max-height: 575px;
   overflow: hidden;
 }
 
@@ -74,24 +185,23 @@ h1 {
   border-radius: 20px;
   color: #F9FEFA;
   padding: 20px 0 30px 50px;
-  margin-top: 200px;
-  margin-left: 50px;
+  align-content: center;
+  margin: 50px;
   text-shadow: #F9FEFA 4px 0 10px;
 
   h1 {
     font-family: "SF Distant Galaxy Alternate", "Nova Square", sans-serif;
-    font-size: 600%;
-    font-size-adjust: 0.5;
-    margin-bottom: -1.5rem;
+    font-size: 6rem;
   }
 
   h3 {
     font-family: "Noto Sans Chorasmian";
+    font-size: 2rem;
   }
 
   p {
     font-family: "Noto Sans Chorasmian";
-    font-size: 1.5em;
+    font-size: 1.5rem;
     margin-top: 50px;
   }
 }
@@ -121,23 +231,13 @@ h1 {
 }
 
 .to-top {
-  background-color: #F9FEFA;
   color: #254F94;
-  border: solid 1px #254F94;
-  width: 70px;
+  margin: 1.5rem 1rem;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
   font-size: smaller;
   font-weight: bold;
-  float: left;
-  margin-top: 500px;
-  position: sticky;
-  left: 10px;
-  top: 500px;
-}
-
-.to-top:hover {
-  background-color: #254F94;
-  color: #F9FEFA;
-  border: solid 1px #F9FEFA;
 }
 
 .media-tile {
@@ -156,7 +256,7 @@ h1 {
 .media-tile-title {
   color: #193665;
   font-weight: bold;
-  font-size: larger;
+  font-size: 1rem;
   text-align: center;
   padding-top: 15px;
 }
@@ -343,5 +443,87 @@ legend, label {
 
   p {
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  h1 {
+    font-size: 4.5rem !important;
+  }
+
+  .media-show-container {
+    width: 80%;
+    
+    h1 {
+      font-size: 3rem !important;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .header-text {
+    width: 85%;
+    margin: auto;
+    margin-top: 3rem;
+    text-align: center;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 3.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  #search-section {
+    justify-content: center;  
+    
+    button {
+      font-size: 0.75rem;
+    }
+  }
+
+  #home-media-index {
+    justify-content: center;
+  }
+
+  .media-tile-title {
+    font-size: 0.9rem;
+  }
+  
+  .member-buttons {
+    font-size: 75%;
+  }
+
+  .media-show-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    h1 {
+      font-size: 2.5rem !important;
+    }
+  
+    img {
+      border-radius: 10px 10px 0px 0px;
+      max-height: 600px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .media-tile-title {
+    font-size: 1rem;
+  }
+
+  .media-show-container {
+    h1 {
+      text-align: center;
+    }
   }
 }

@@ -45,9 +45,9 @@ const MemberButtons = ({ media, user }) => {
         
     return (
         <div className="member-buttons grid-x">
-            <li key="wanted" className="cell small-3 button" onClick={wantMedia}>Want{inWantList}</li>
-            <li key="owned" className="cell small-3 button"  onClick={ownMedia}>Own{inOwnList}</li>
-            <li key="consumed" className="cell small-4 button" onClick={consumeMedia}>Watched{inConsumedList}</li>
+            <li key="wanted" className="cell small-3 medium-7 large-3 button" onClick={wantMedia}>Want{inWantList}</li>
+            <li key="owned" className="cell small-3 medium-7 large-3 button"  onClick={ownMedia}>Own{inOwnList}</li>
+            <li key="consumed" className="cell small-4 medium-7 large-3 button" onClick={consumeMedia}>Watched{inConsumedList}</li>
         </div>  
     )
 }

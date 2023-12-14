@@ -27,7 +27,7 @@ const MediaTile = ({ item, user }) => {
     }
 
     return (
-        <div className="cell small-3 media-tile">
+        <div className="cell small-10 medium-4 large-3 media-tile">
             <Link to={`/${id}`}>
                 <img src={cover_image} className="media-tile-cover"/>
                 <p className="media-tile-title">{title}</p>
