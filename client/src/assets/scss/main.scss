@@ -450,9 +450,21 @@ legend, label {
   h1 {
     font-size: 4.5rem !important;
   }
+
+  .media-show-container {
+    width: 80%;
+    
+    h1 {
+      font-size: 3rem !important;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 640px) {
   .header-text {
     width: 85%;
     margin: auto;
@@ -488,11 +500,30 @@ legend, label {
   .member-buttons {
     font-size: 75%;
   }
+
+  .media-show-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    h1 {
+      font-size: 2.5rem !important;
+    }
   
+    img {
+      border-radius: 10px 10px 0px 0px;
+      max-height: 600px;
+    }
+  }
 }
 
 @media screen and (max-width: 500px) {
   .media-tile-title {
     font-size: 1rem;
+  }
+
+  .media-show-container {
+    h1 {
+      text-align: center;
+    }
   }
 }

@@ -73,10 +73,10 @@ const MediaShow = ({ user }) => {
     if (user) {
         memberButtons = (
             <>
-            <h6 className="cell large-10">In my lists:</h6>
-            <div className="show-member-buttons cell large-10">
-                <MemberButtons media={media} user={user}/>
-            </div>
+                <h6 className="cell large-10">In my lists:</h6>
+                <div className="show-member-buttons cell large-10">
+                    <MemberButtons media={media} user={user}/>
+                </div>
             </>
         )
     }
@@ -97,8 +97,8 @@ const MediaShow = ({ user }) => {
 
     return (
         <div className="media-show-container grid-x">
-            <img src={media.cover_image} className="cell medium-5 media-show-cover"/>
-            <div className="cell medium-7 media-show-details">
+            <img src={media.cover_image} className="cell small-12 medium-5 media-show-cover"/>
+            <div className="cell small-12 medium-7 media-show-details">
                 <h1>{media.title}</h1>
                 <p>Directed by: {directors.join(", ")}</p>
                 <p>Written by: {writers.join(", ")}</p>
