@@ -88,7 +88,7 @@ const MediaIndex = ({ user }) => {
                 <div id="search-section" className="grid-x">
                     <button className="cell small-1 button" onClick={submitSearch}>Search</button>
                     <input id="site-search" type="search" placeholder="Enter search query" className="cell large-9" onChange={handleInputChange}/>
-                    <button className="cell small-1 button" onClick={refreshPage}>Reset Page</button>
+                    <button className="cell small-1 button" onClick={refreshPage}>Refresh</button>
                 </div>
             </div>
             <button className="to-top button" onClick={scrollToTop}>Go To Top</button>
