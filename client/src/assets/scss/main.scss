@@ -231,23 +231,13 @@ h1 {
 }
 
 .to-top {
-  background-color: #F9FEFA;
   color: #254F94;
-  border: solid 1px #254F94;
-  width: 70px;
+  margin: 1.5rem 1rem;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
   font-size: smaller;
   font-weight: bold;
-  float: left;
-  margin-top: 500px;
-  position: sticky;
-  left: 10px;
-  top: 500px;
-}
-
-.to-top:hover {
-  background-color: #254F94;
-  color: #F9FEFA;
-  border: solid 1px #F9FEFA;
 }
 
 .media-tile {
@@ -266,7 +256,7 @@ h1 {
 .media-tile-title {
   color: #193665;
   font-weight: bold;
-  font-size: larger;
+  font-size: 1rem;
   text-align: center;
   padding-top: 15px;
 }
@@ -456,7 +446,13 @@ legend, label {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1050px) {
+  h1 {
+    font-size: 4.5rem !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
   .header-text {
     width: 85%;
     margin: auto;
@@ -471,5 +467,32 @@ legend, label {
 
   h3 {
     font-size: 1.5rem !important;
+  }
+  
+  #search-section {
+    justify-content: center;  
+    
+    button {
+      font-size: 0.75rem;
+    }
+  }
+
+  #home-media-index {
+    justify-content: center;
+  }
+
+  .media-tile-title {
+    font-size: 0.9rem;
+  }
+  
+  .member-buttons {
+    font-size: 75%;
+  }
+  
+}
+
+@media screen and (max-width: 500px) {
+  .media-tile-title {
+    font-size: 1rem;
   }
 }

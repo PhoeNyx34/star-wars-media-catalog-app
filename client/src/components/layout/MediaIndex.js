@@ -86,15 +86,15 @@ const MediaIndex = ({ user }) => {
             </div>
             <div id="search-and-filter">
                 <div id="search-section" className="grid-x">
-                    <button className="cell small-1 button" onClick={submitSearch}>Search</button>
-                    <input id="site-search" type="search" placeholder="Enter search query" className="cell large-9" onChange={handleInputChange}/>
-                    <button className="cell small-1 button" onClick={refreshPage}>Refresh</button>
+                    <button className="cell small-2 large-1 button" onClick={submitSearch}>Search</button>
+                    <input id="site-search" type="search" placeholder="Enter search query" className="cell small-6 large-9" onChange={handleInputChange}/>
+                    <button className="cell small-2 large-1 button" onClick={refreshPage}>Refresh</button>
                 </div>
             </div>
-            <button className="to-top button" onClick={scrollToTop}>Go To Top</button>
             <div id="home-media-index" className="grid-x grid-margin-x">
                 {mediaTiles}
             </div>
+            <div className="to-top" onClick={scrollToTop}>Go to Top</div>
         </>
     )
 }
