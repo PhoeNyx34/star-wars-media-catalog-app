@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useCollapse } from "react-collapsed"
 import { Link } from "react-router-dom"
+import WantedMediaList from "./WantedMediaList"
+import OwnedMediaList from "./OwnedMediaList"
+import ConsumedMediaList from "./ConsumedMediaList"
 
 const AccountPage = ({ user }) => {
     const { id, email, type } = user
@@ -64,27 +67,9 @@ const AccountPage = ({ user }) => {
                 {adminButtons}
             </div>
             <div className="grid-x user-account-media-lists">
-                <div className="cell small-11 medium-4">
-                    <h3>Media I Want</h3>
-                    <button class="button" {...getToggleProps()}>
-                        {isExpanded ? 'Collapse List' : 'Show List'}
-                    </button>
-                    <section {...getCollapseProps()}>{wantedMediaList}</section>
-                </div>
-                <div className="cell small-11 medium-4">
-                    <h3>Media I Own</h3>
-                    <button class="button" {...getToggleProps()}>
-                        {isExpanded ? 'Collapse List' : 'Show List'}
-                    </button>
-                    <section {...getCollapseProps()}>{ownedMediaList}</section>
-                </div>
-                <div className="cell small-11 medium-4">
-                    <h3>Media I've Consumed</h3>
-                    <button class="button" {...getToggleProps()}>
-                        {isExpanded ? 'Collapse List' : 'Show List'}
-                    </button>
-                    <section {...getCollapseProps()}>{consumedMediaList}</section>
-                </div>
+                <WantedMediaList wantedMediaList={wantedMediaList} className="cell medium-12"/>
+                <OwnedMediaList ownedMediaList={ownedMediaList} className="cell medium-12"/>
+                <ConsumedMediaList consumedMediaList={consumedMediaList} className="cell medium-12"/>
             </div>
         </div>
     )
