@@ -30,6 +30,7 @@ h1 {
   background-color: #1B7EC4;
   font-weight: bold;
   border-radius: 5px;
+  padding: unset;
 }
 
 .form-buttons {
@@ -145,7 +146,7 @@ h1 {
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   #menu-toggle:checked ~ .menu li {
-    border: 1px solid #193665;
+    border: 0.5px solid #193665;
     height: 2.5em;
     padding: 0.5em;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -164,7 +165,7 @@ h1 {
     }
   }
   .menu > li:not(:last-child) {
-    border-bottom: 1px solid #193665;
+    border-bottom: 0.5px solid #193665;
   }
 }
 
@@ -268,7 +269,7 @@ h1 {
   li {
     padding: 5px 7px;
     margin: 5px;
-    font-size: small;
+    font-size: 0.75rem;
   }
 
   i {
@@ -346,7 +347,7 @@ h1 {
   width: 79%;
   margin: auto;
   margin-bottom: 0px;
-  padding: 50px;
+  padding: 3rem;
   color: #193665;
   background-color: #F9FEFA;
   border: 1px solid #193665;
@@ -354,13 +355,13 @@ h1 {
 
   .non-media-page-top {
     margin: auto;
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
     max-width: 700px;
     
     h1 {
-      font-size: 450%;
+      font-size: 5rem;
       text-align: center;
-      padding: 50px 0px 75px 0px;
+      padding: 3rem 0px;
     }
   }
 
@@ -397,7 +398,7 @@ h1 {
   color: #193665;
   
   h1 {
-    font-size: 450%;
+    font-size: 5rem;
     text-align: center;
     padding: 50px 0px 75px 0px;
   }
@@ -448,14 +449,14 @@ legend, label {
 
 @media screen and (max-width: 1050px) {
   h1 {
-    font-size: 4.5rem !important;
+    font-size: 4.5rem;
   }
 
   .media-show-container {
     width: 80%;
     
     h1 {
-      font-size: 3rem !important;
+      font-size: 3rem;
     }
 
     p {
@@ -474,19 +475,15 @@ legend, label {
   }
 
   h1 {
-    font-size: 3.5rem !important;
+    font-size: 3.5rem;
   }
 
   h3 {
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
   }
   
   #search-section {
     justify-content: center;  
-    
-    button {
-      font-size: 0.75rem;
-    }
   }
 
   #home-media-index {
@@ -506,7 +503,7 @@ legend, label {
     margin-bottom: 5rem;
 
     h1 {
-      font-size: 2.5rem !important;
+      font-size: 2.5rem;
     }
   
     img {
@@ -517,6 +514,12 @@ legend, label {
 }
 
 @media screen and (max-width: 500px) {
+  .header-text {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  
   .media-tile-title {
     font-size: 1rem;
   }
@@ -526,4 +529,85 @@ legend, label {
       text-align: center;
     }
   }
+
+  .non-media-page {
+    .about-header {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .button {
+    font-size: 0.6rem;
+  }
+
+  .menu li:last-child {
+    background-color: #1B7EC4;
+      
+    .button {
+      font-size: 1rem;
+    }
+  }
+  
+  .header-text {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h3, p {
+      font-size: 1rem;
+    }
+  }
+
+  .non-media-page {
+      width: 85%;
+      padding: 1rem;
+    
+    .non-media-page-top {
+      h1 {
+      font-size: 1.75rem;
+      text-align: center;
+      padding: 1.5rem;
+      }
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 0.8rem;
+
+      a {
+        float: right;
+      }
+    }
+    
+    #obi-wan-gif {
+      margin-top: -3rem;
+    }
+
+    #about-developer-header {
+      margin-top: 3rem;
+    }
+  }
+
+  .form-page {
+    width: 85%;
+
+    h1 {
+      font-size: 2rem;
+      padding: 1.5rem;
+    }
+
+    .button {
+      font-size: 0.875rem;
+      padding: 0.85em 1em;
+    }
+  }
+
 }
