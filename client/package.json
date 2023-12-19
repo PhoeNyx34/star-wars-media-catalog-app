@@ -39,6 +39,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "prop-types": "~15.7",
     "react": "~16.13",
+    "react-collapsed": "^4.1.2",
     "react-dom": "~16.13",
     "react-hot-loader": "^4.12.21",
     "react-router-dom": "5.2",
