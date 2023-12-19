@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useCollapse } from "react-collapsed"
 import { Link } from "react-router-dom"
 
 const AccountPage = ({ user }) => {
@@ -6,6 +7,10 @@ const AccountPage = ({ user }) => {
     const [ownedMedia, setOwnedMedia] = useState([])
     const [consumedMedia, setConsumedMedia] = useState([])
     const [wantedMedia, setWantedMedia] = useState([])
+
+
+    const[isExpanded, setExpanded] = useState(true)
+    const { getCollapseProps, getToggleProps } = useCollapse(isExpanded)
 
     const getUserMedia = async () => {
         try {
@@ -59,23 +64,26 @@ const AccountPage = ({ user }) => {
                 {adminButtons}
             </div>
             <div className="grid-x user-account-media-lists">
-                <div className="cell small-4">
+                <div className="cell small-11 medium-4">
                     <h3>Media I Want</h3>
-                    <ul>
-                        {wantedMediaList}
-                    </ul>
+                    <button class="button" {...getToggleProps()}>
+                        {isExpanded ? 'Collapse List' : 'Show List'}
+                    </button>
+                    <section {...getCollapseProps()}>{wantedMediaList}</section>
                 </div>
-                <div className="cell small-4">
+                <div className="cell small-11 medium-4">
                     <h3>Media I Own</h3>
-                    <ul>
-                        {ownedMediaList}
-                    </ul>
+                    <button class="button" {...getToggleProps()}>
+                        {isExpanded ? 'Collapse List' : 'Show List'}
+                    </button>
+                    <section {...getCollapseProps()}>{ownedMediaList}</section>
                 </div>
-                <div className="cell small-4">
+                <div className="cell small-11 medium-4">
                     <h3>Media I've Consumed</h3>
-                    <ul>
-                        {consumedMediaList}
-                    </ul>
+                    <button class="button" {...getToggleProps()}>
+                        {isExpanded ? 'Collapse List' : 'Show List'}
+                    </button>
+                    <section {...getCollapseProps()}>{consumedMediaList}</section>
                 </div>
             </div>
         </div>

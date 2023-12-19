@@ -30,7 +30,6 @@ h1 {
   background-color: #1B7EC4;
   font-weight: bold;
   border-radius: 5px;
-  padding: unset;
 }
 
 .form-buttons {
@@ -382,7 +381,7 @@ h1 {
   margin-top: 50px; 
   padding-top: 15px;
 
-  ul {
+  section {
     list-style-type: none;
   }
 }
@@ -538,8 +537,10 @@ legend, label {
 }
 
 @media screen and (max-width: 280px) {
-  .button {
-    font-size: 0.6rem;
+  #search-and-filter {
+    .button {
+      font-size: 0.6rem;
+    }
   }
 
   .menu li:last-child {
@@ -606,7 +607,6 @@ legend, label {
 
     .button {
       font-size: 0.875rem;
-      padding: 0.85em 1em;
     }
   }
 
