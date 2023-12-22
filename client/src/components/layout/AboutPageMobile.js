@@ -7,7 +7,7 @@ const AboutPageMobile = () => {
                 <h1>About Holocron</h1>
             </div>
             <div className="about-section grid-x">
-                <div className="cell small-11">
+                <div className="cell small-11 about-gif">
                     <iframe src="https://giphy.com/embed/3ornk57KwDXf81rjWM" width="100%" height="100%" frameBorder="0" allowFullScreen></iframe>
                     <p><a href="https://giphy.com/gifs/starwars-movie-star-wars-3ornk57KwDXf81rjWM" id="obi-wan-gif">via GIPHY</a></p>
                 </div>
@@ -19,7 +19,7 @@ const AboutPageMobile = () => {
                 </div>
             </div>
             <div className="about-section grid-x">
-                <div className="cell small-11">
+                <div className="cell small-11 about-gif">
                     <iframe width="100%" height="100%" src="https://giphy.com/embed/gZXI7pNvN5AaY" frameBorder="0" allowFullScreen></iframe>
                     <p><a href="https://giphy.com/gifs/han-solo-star-wars-gZXI7pNvN5AaY">via GIPHY</a></p>
                 </div>
