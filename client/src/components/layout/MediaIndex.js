@@ -86,9 +86,9 @@ const MediaIndex = ({ user }) => {
             </div>
             <div id="search-and-filter">
                 <div id="search-section" className="grid-x">
-                    <button className="cell small-2 large-1 button" onClick={submitSearch}>Search</button>
-                    <input id="site-search" type="search" placeholder="Enter search query" className="cell small-6 large-9" onChange={handleInputChange}/>
                     <button className="cell small-2 large-1 button" onClick={refreshPage}>Refresh</button>
+                    <input id="site-search" type="search" placeholder="Enter search query" className="cell small-6 large-9" onChange={handleInputChange}/>
+                    <button className="cell small-2 large-1 button" onClick={submitSearch}>Search</button>
                 </div>
             </div>
             <div id="home-media-index" className="grid-x grid-margin-x">
