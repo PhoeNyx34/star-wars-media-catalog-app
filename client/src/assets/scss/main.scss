@@ -340,6 +340,21 @@ h1 {
 
 .user-buttons {
   margin-top: 50px;
+
+  .show-member-buttons {
+    justify-content: center;
+    margin-bottom: 10px;
+    
+    li {
+      padding: 5px 7px;
+      margin: 5px;
+      font-size: 0.75rem;
+    }
+  
+    i {
+      padding-left: 7px;
+    }
+  }
 }
 
 .non-media-page {
@@ -546,6 +561,10 @@ legend, label {
 }
 
 @media screen and (max-width: 280px) {
+  p {
+    font-size: 0.8rem;
+  }
+
   #search-and-filter {
     .button {
       font-size: 0.6rem;
@@ -571,6 +590,8 @@ legend, label {
     }
   }
 
+
+
   .non-media-page {
       width: 85%;
       padding: 1rem;
@@ -580,6 +601,10 @@ legend, label {
         font-size: 1.75rem;
         text-align: center;
         padding: 1.5rem;
+      }
+
+      p {
+        text-align: center;
       }
     }
 
@@ -636,7 +661,7 @@ legend, label {
 
     button {
       margin: auto;
-      font-size: 0.8rem;
+      font-size: 0.875rem;
     }
 
     section {

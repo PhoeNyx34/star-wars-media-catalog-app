@@ -75,7 +75,7 @@ const MediaShow = ({ user }) => {
             <>
                 <h6 className="cell large-10">In my lists:</h6>
                 <div className="show-member-buttons cell large-10">
-                    <MemberButtons media={media} user={user}/>
+                    <MemberButtons media={media} user={user} page="show"/>
                 </div>
             </>
         )
@@ -100,10 +100,10 @@ const MediaShow = ({ user }) => {
             <img src={media.cover_image} className="cell small-12 medium-5 media-show-cover"/>
             <div className="cell small-12 medium-7 media-show-details">
                 <h1>{media.title}</h1>
-                <p>Directed by: {directors.join(", ")}</p>
-                <p>Written by: {writers.join(", ")}</p>
-                <p>Released: {releaseDate.toDateString()}</p>
-                <p>Audience rating: {media.rating}</p>
+                <p><span className="media-title">Directed by:</span> {directors.join(", ")}</p>
+                <p><span className="media-title">Written by:</span> {writers.join(", ")}</p>
+                <p><span className="media-title">Released:</span> {releaseDate.toDateString()}</p>
+                <p><span className="media-title">Audience rating:</span> {media.rating}</p>
                 <p>{media.description}</p>
                 <ul className="tag-bubbles">{tagBubbles}</ul>
                 <div className="grid-x user-buttons">
