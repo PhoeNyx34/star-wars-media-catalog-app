@@ -9,7 +9,7 @@ const MediaTile = ({ item, user }) => {
     
     let memberButtons
     if (user) {
-        memberButtons = <MemberButtons media={item} user={user} />
+        memberButtons = <MemberButtons media={item} user={user} page="tile" />
     }
 
     const deleteMedia = (event) => {

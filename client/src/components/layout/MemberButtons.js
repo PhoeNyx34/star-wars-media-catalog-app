@@ -4,7 +4,7 @@ import setOwnership from "../../services/setOwnership.js"
 import setConsumership from "../../services/setConsumership.js"
 import setWantship from "../../services/setWantship.js"
 
-const MemberButtons = ({ media, user }) => {
+const MemberButtons = ({ media, user, page }) => {
 
     const {id, isWanted, isOwned, isConsumed} = media
     const [shouldRedirect, setShouldRedirect] = useState(false)
@@ -42,7 +42,18 @@ const MemberButtons = ({ media, user }) => {
     if (isConsumed) {
         inConsumedList = <i className="fa-solid fa-check"></i>
     }
-        
+
+    if (page === "show") {
+        return (
+            <div className="show-member-buttons grid-x">
+                <li key="wanted" className="cell small-10 medium-7 large-3 button" onClick={wantMedia}>Want{inWantList}</li>
+                <li key="owned" className="cell small-10 medium-7 large-3 button"  onClick={ownMedia}>Own{inOwnList}</li>
+                <li key="consumed" className="cell small-10 medium-7 large-3 button" onClick={consumeMedia}>Watched{inConsumedList}</li>
+            </div>  
+        )
+
+    }    
+
     return (
         <div className="member-buttons grid-x">
             <li key="wanted" className="cell small-3 medium-7 large-3 button" onClick={wantMedia}>Want{inWantList}</li>
