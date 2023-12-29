@@ -544,15 +544,20 @@ legend, label {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 540px) {
   .header-text {
     h1 {
       font-size: 3rem;
+    }
+
+    h3, p {
+      font-size: 1.2rem;
     }
   }
 
   #search-and-filter {
     .button {
+      font-size: 0.8rem;
       padding: initial;
     }
   }
@@ -565,6 +570,11 @@ legend, label {
     h1 {
       text-align: center;
       padding: initial;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 0.9rem;
     }
 
     h6 {
@@ -584,9 +594,13 @@ legend, label {
       width: 85%;
       padding: 1rem;
     
+    p {
+      font-size: 0.9rem;
+    }
+    
     .non-media-page-top {
       h1 {
-        font-size: 2rem;
+        font-size: 3rem;
         text-align: center;
       }
 
@@ -621,6 +635,75 @@ legend, label {
       margin-top: 3rem;
     }
   }
+
+  .form-page {
+    width: 85%;
+
+    h1 {
+      font-size: 3rem;
+      padding: 1.5rem;
+    }
+
+    .button {
+      font-size: 0.875rem;
+    }
+  }
+
+  .user-account-media-lists {
+    .cell {
+      width: initial;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+    }
+
+    button {
+      margin: auto;
+      max-width: initial !important;
+    }
+
+    section {
+      margin-top: 1rem;
+    }
+
+    li {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .non-media-page {
+    h2 {
+      font-size: 1rem;
+    }  
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .media-show-container {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .non-media-page {
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .user-account-media-lists {
+    li {
+      font-size: 0.8rem;
+    }
+  }
 }
 
 @media screen and (max-width: 360px) {
@@ -640,46 +723,9 @@ legend, label {
     }
   }
 
-  .media-show-container {
+  .form-page {
     h1 {
-      font-size: 1.75rem;
-    }
-
-    p {
-      font-size: 0.8rem;
-    }
-  }
-
-  .non-media-page {
-    h2 {
-      font-size: 1rem;
-    }  
-    
-    p {
-      font-size: 0.8rem;
-    }
-  }
-
-  .user-account-media-lists {
-    .cell {
-      width: initial;
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      margin-top: 2rem;
-    }
-
-    button {
-      margin: auto;
-    }
-
-    section {
-      margin-top: 1rem;
-    }
-
-    li {
-      font-size: 1rem;
+      font-size: 2rem;
     }
   }
 }
@@ -707,7 +753,7 @@ legend, label {
     }
 
     h2 {
-      font-size: 0.85rem;
+      font-size: 0.875rem;
     }
 
     p {
@@ -717,26 +763,13 @@ legend, label {
     }
   }
 
-  .form-page {
-    width: 85%;
-
-    h1 {
-      font-size: 2rem;
-      padding: 1.5rem;
-    }
-
-    .button {
-      font-size: 0.875rem;
-    }
-  }
-
   .user-account-media-lists {
+    h2 {
+      font-size: 1rem;
+    }
+    
     button {
       font-size: 0.875rem;
-    }
-
-    li {
-      font-size: 0.8rem;
     }
   }
 }
