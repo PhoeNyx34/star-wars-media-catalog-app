@@ -171,6 +171,14 @@ h1 {
   .menu > li:not(:last-child) {
     border-bottom: 0.5px solid #193665;
   }
+
+  .menu li:last-child {
+    background-color: #1B7EC4;
+      
+    .button {
+      font-size: 1rem;
+    }
+  }
 }
 
 #home-header {
@@ -353,7 +361,6 @@ h1 {
     li {
       padding: 5px 7px;
       margin: 5px;
-      font-size: 0.75rem;
     }
   
     i {
@@ -486,10 +493,6 @@ legend, label {
     h1 {
       font-size: 3rem;
     }
-
-    p {
-      font-size: 0.8rem;
-    }
   }
 }
 
@@ -541,72 +544,49 @@ legend, label {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 540px) {
   .header-text {
     h1 {
       font-size: 3rem;
     }
+
+    h3, p {
+      font-size: 1.2rem;
+    }
+  }
+
+  #search-and-filter {
+    .button {
+      font-size: 0.8rem;
+      padding: initial;
+    }
   }
   
   .media-tile-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .media-show-container {
     h1 {
       text-align: center;
-    }
-  }
-
-  .non-media-page {
-    .about-header {
-      font-size: 1rem;
-    }
-  }
-}
-
-@media screen and (max-width: 280px) {
-  p {
-    font-size: 0.8rem;
-  }
-
-  #search-and-filter {
-    .button {
-      font-size: 0.6rem;
       padding: initial;
-    }
-  }
-
-  .menu li:last-child {
-    background-color: #1B7EC4;
-      
-    .button {
-      font-size: 1rem;
-    }
-  }
-  
-  .header-text {
-    h1 {
       font-size: 2rem;
     }
 
-    h3, p {
-      font-size: 1rem;
-    }
-  }
-
-  .media-show-container {
-    h1 {
-      padding: initial;
-      font-size: 1.75rem;
+    p {
+      font-size: 0.9rem;
     }
 
     h6 {
       text-align: center;
     }
 
+    .tag-bubbles {
+      margin: initial;
+    }
+
     .tag {
-      font-size: 0.8rem;
+      margin: auto;
     }
   }
 
@@ -614,11 +594,14 @@ legend, label {
       width: 85%;
       padding: 1rem;
     
+    p {
+      font-size: 0.9rem;
+    }
+    
     .non-media-page-top {
       h1 {
-        font-size: 1.75rem;
+        font-size: 3rem;
         text-align: center;
-        padding: 1.5rem;
       }
 
       p {
@@ -627,20 +610,21 @@ legend, label {
     }
 
     h2 {
-      font-size: 0.9rem;
       font-weight: bold;
-      margin-bottom: 1rem;
+      margin: 1.2rem 0;
       text-align: center;
     }
 
     p {
       a {
         float: right;
+        position: relative;
+        top: 3rem;
       }
     }
 
     .about-gif {
-      justify-content: center;
+      margin: auto;
     }
     
     #obi-wan-gif {
@@ -656,7 +640,7 @@ legend, label {
     width: 85%;
 
     h1 {
-      font-size: 2rem;
+      font-size: 3rem;
       padding: 1.5rem;
     }
 
@@ -667,17 +651,17 @@ legend, label {
 
   .user-account-media-lists {
     .cell {
-      width: 200%;
+      width: initial;
     }
 
     h2 {
-      font-size: 1rem;
+      font-size: 1.3rem;
       margin-top: 2rem;
     }
 
     button {
       margin: auto;
-      font-size: 0.875rem;
+      max-width: initial !important;
     }
 
     section {
@@ -685,7 +669,107 @@ legend, label {
     }
 
     li {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .non-media-page {
+    h2 {
+      font-size: 1rem;
+    }  
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .media-show-container {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    p {
       font-size: 0.8rem;
+    }
+  }
+
+  .non-media-page {
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .user-account-media-lists {
+    li {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header-text {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h3, p {
+      font-size: 1rem;
+    }
+  }
+
+  #search-and-filter {
+    .button {
+      font-size: 0.7rem;
+    }
+  }
+
+  .form-page {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 280px) {
+  #search-and-filter {
+    .button {
+      font-size: 0.6rem;
+    }
+  }
+
+  .media-tile-title {
+    font-size: 1rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+  }
+
+  .non-media-page {
+    .non-media-page-top {
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+
+    h2 {
+      font-size: 0.875rem;
+    }
+
+    p {
+      a {
+        top: 1rem;
+      }
+    }
+  }
+
+  .user-account-media-lists {
+    h2 {
+      font-size: 1rem;
+    }
+    
+    button {
+      font-size: 0.875rem;
     }
   }
 }
