@@ -42,6 +42,9 @@ class MediaSerializer {
                     serializedItem[attribute] = item[attribute]
                 }
 
+                const era = SearchAndFilterSerializer.getEra(item)
+                serializedItem.era = era
+
                 let roles = await item.$relatedQuery('behindSceneRoles')
                 const serializedRoles = await RoleSerializer.getNamesForFilter(roles)
                 serializedItem.behindSceneRoles = serializedRoles
@@ -61,9 +64,6 @@ class MediaSerializer {
                 if (isWanted.length > 0) {
                     serializedItem.isWanted = true
                 }
-
-                const era = SearchAndFilterSerializer.getEra(item)
-                serializedItem.era = era
     
                 return serializedItem
             }))
@@ -74,16 +74,16 @@ class MediaSerializer {
                 for (const attribute of allowedAttributes) {
                     serializedItem[attribute] = item[attribute]
                 }
-
+                
+                const era = SearchAndFilterSerializer.getEra(item)
+                serializedItem.era = era
+                
                 let roles = await item.$relatedQuery('behindSceneRoles')
                 const serializedRoles = await RoleSerializer.getNamesForFilter(roles)
                 serializedItem.behindSceneRoles = serializedRoles
 
                 let searchArray = await SearchAndFilterSerializer.getSearchableArray(item)
                 serializedItem.search = searchArray
-                
-                const era = SearchAndFilterSerializer.getEra(item)
-                serializedItem.era = era
 
                 return serializedItem
             }))

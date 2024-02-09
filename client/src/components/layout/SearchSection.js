@@ -33,8 +33,8 @@ const SearchSection = ({media, setSearchResults}) => {
             <div {...getCollapseProps()}>
                 <div className="collapsible-content grid-x">
                     <input type="search" className="cell large-12" placeholder="Enter search query" onChange={handleInputChange}/>
-                    <button className="cell small-2 button" onClick={submitSearch}>Search</button>
                     <button className="cell small-2 button" onClick={refreshPage}>Refresh</button>
+                    <button className="cell small-2 button" onClick={submitSearch}>Search</button>
                 </div>
             </div>
         </div>

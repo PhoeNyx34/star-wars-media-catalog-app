@@ -42,7 +42,7 @@ const FilterSection = ({media, setFilterResults}) => {
 
             for (const key of Object.keys(filterParams)) {
                 if (key === 'behindSceneRoles') {
-                    if (item[key].includes(filterParams[key])){
+                    if (item[key].includes(filterParams[key])) {
                         matches.push(true)
                     } else {
                         matches.push(false)
@@ -50,7 +50,6 @@ const FilterSection = ({media, setFilterResults}) => {
                 }
                 
                 if (key !== 'behindSceneRoles') {
-                    // make "for {...} a service function in a separate file"
                     for (const itemKey of itemEntries) {
                         if (key === itemKey && filterParams[key] === item[itemKey]) {
                             matches.push(true)
@@ -169,8 +168,8 @@ const FilterSection = ({media, setFilterResults}) => {
                     </form>
 
                     <div className="search-filter-buttons grid-x">
-                        <button className="cell small-2 button" onClick={submitFilter}>Set Filters</button>
                         <button className="cell small-2 button" onClick={refreshPage}>Refresh</button>
+                        <button className="cell small-2 button" onClick={submitFilter}>Set Filters</button>
                     </div>
                 </div>
             </div>
