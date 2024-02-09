@@ -68,6 +68,33 @@ class SearchAndFilterSerializer {
 
         return searchArray
     }
+
+    static getEra(item) {
+        let era = ""
+        if (item.fictional_year_end < -25025) {
+            era = "Dawn of the Jedi"
+        } else if (item.fictional_year_start < -1000) {
+            era = "The Old Republic"
+        } else if (item.fictional_year_start < -500) {
+            era = "Reformation"
+        } else if (item.fictional_year_start < -100) {
+            era = "The High Republic"
+        } else if (item.fictional_year_start < -18) {
+            era = "Fall of the Jedi"
+        } else if (item.fictional_year_start < 0) {
+            era = "Reign of the Empire"
+        } else if (item.fictional_year_start < 6) {
+            era = "Age of Rebellion"
+        } else if (item.fictional_year_start < 34) {
+            era = "The New Republic"
+        } else if (item.fictional_year_start <= 35 ) {
+            era = "Rise of the First Order"
+        } else {
+            era = "New Jedi Order"
+        }
+        
+        return era
+    }
 }
 
 export default SearchAndFilterSerializer

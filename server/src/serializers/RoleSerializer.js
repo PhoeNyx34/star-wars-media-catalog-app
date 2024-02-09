@@ -34,6 +34,18 @@ class RoleSerializer {
         }))
         return serializedRoles
     }
+
+    static async getNamesForFilter(roles) {
+        const namesList = await Promise.all(roles.map(async (role) => {
+            const contributor = await role.$relatedQuery("contributor")
+            const serializedContributor = ContributorSerializer.getName(contributor)
+            return serializedContributor.name
+        }))
+        
+        const namesListNoDupes = [...new Set(namesList)]
+
+        return namesListNoDupes
+    }
 }
 
 export default RoleSerializer

@@ -33,7 +33,7 @@ class MediaSerializer {
     }
     
     static async getAllMedia(media, userId) {
-        const allowedAttributes = ["id", "title", "cover_image"]
+        const allowedAttributes = ["id", "type", "title", "cover_image", "canon", "animated", "lego", "rating"]
         
         if (userId) {
             const serializedMedia = await Promise.all(media.map(async (item) => {
@@ -41,6 +41,13 @@ class MediaSerializer {
                 for (const attribute of allowedAttributes) {
                     serializedItem[attribute] = item[attribute]
                 }
+
+                const era = SearchAndFilterSerializer.getEra(item)
+                serializedItem.era = era
+
+                let roles = await item.$relatedQuery('behindSceneRoles')
+                const serializedRoles = await RoleSerializer.getNamesForFilter(roles)
+                serializedItem.behindSceneRoles = serializedRoles
 
                 let searchArray = await SearchAndFilterSerializer.getSearchableArray(item)
                 serializedItem.search = searchArray
@@ -67,10 +74,17 @@ class MediaSerializer {
                 for (const attribute of allowedAttributes) {
                     serializedItem[attribute] = item[attribute]
                 }
+                
+                const era = SearchAndFilterSerializer.getEra(item)
+                serializedItem.era = era
+                
+                let roles = await item.$relatedQuery('behindSceneRoles')
+                const serializedRoles = await RoleSerializer.getNamesForFilter(roles)
+                serializedItem.behindSceneRoles = serializedRoles
 
                 let searchArray = await SearchAndFilterSerializer.getSearchableArray(item)
                 serializedItem.search = searchArray
-    
+
                 return serializedItem
             }))
             return serializedMedia
