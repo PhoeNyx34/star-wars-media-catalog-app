@@ -35,27 +35,44 @@ const FilterSection = ({media, setFilterResults}) => {
     const submitFilter = (event) => {
         event.preventDefault()
         cleanFilterInput()
+        console.log(filterParams)
         const filterResults = media.filter(item => {
-            const itemEntries = Object.entries(item)    
+            const itemEntries = Object.keys(item) 
             const matches = []
-            for (const [key,value] of Object.entries(filterParams)) {
-                // if item value is array
-                if (itemEntries.find(entry => entry[0] === key && typeof entry[1] === 'object')) {
-                   // how to isolate entry and check for matching value?
-                }
 
-                // if item value is string/boolean
-                if (itemEntries.find(entry => entry[0] === key && entry[1] === value)) {
-                    matches.push(true)
-                } else {
-                    matches.push(false)
-                }     
+            for (const key of Object.keys(filterParams)) {
+                if (key === 'behindSceneRoles') {
+                    if (item[key].includes(filterParams[key])){
+                        matches.push(true)
+                    } else {
+                        matches.push(false)
+                    }
+                }
+                
+                if (key !== 'behindSceneRoles') {
+                    // make "for {...} a service function in a separate file"
+                    for (const itemKey of itemEntries) {
+                        if (key === itemKey && filterParams[key] === item[itemKey]) {
+                            matches.push(true)
+                            break
+                        } else if (key === itemKey && filterParams[key] !== item[itemKey]) {
+                            matches.push(false)
+                            break
+                        }
+                    }
+                }
             }
+
             if (!matches.includes(false)) {
                 return item
             }
         })
-        setFilterResults(filterResults)
+
+        if (filterResults.length === 0) {
+            window.alert("Your filter query did not return any results.")
+        } else {
+            setFilterResults(filterResults)
+        }
     }
 
     const refreshPage = (event) => {
@@ -68,7 +85,7 @@ const FilterSection = ({media, setFilterResults}) => {
     const typeOptions = mediaTypes.map(type => {
         return <option key={type} value={type}>{type}</option>
     })
-    
+
     const mediaRatings = [...new Set(media.map(media => {
         return media.rating
     }))]
