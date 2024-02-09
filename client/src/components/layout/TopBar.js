@@ -24,22 +24,25 @@ const TopBar = ({ user }) => {
   ];
 
   return (
-    <div className="top-bar">
-      <div className="top-bar-left">
+    <>
+      <section className="top-nav">
+          <div className="menu-title">Holocron</div>
+          <input id="menu-toggle" type="checkbox" />
+          <label className='menu-button-container' htmlFor="menu-toggle">
+          <div className='menu-button'></div>
+        </label>
         <ul className="menu">
-          <li className="menu-text">Holocron</li>
-          <li>
-            <Link to="/" className="nav-option">Home</Link>
-          </li>
-          <li>
-            <Link to="/about" className="nav-option">About</Link>
-          </li>
+            <li>
+              <Link to="/" className="nav-option">Home</Link>
+            </li>
+            <li>
+              <Link to="/about" className="nav-option">About</Link>
+            </li>
+          {user ? authenticatedListItems : unauthenticatedListItems}
         </ul>
-      </div>
-      <div className="top-bar-right">
-        <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
-      </div>
-    </div>
+      </section>
+
+    </>
   );
 };
 

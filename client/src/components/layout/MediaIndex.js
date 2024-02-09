@@ -75,7 +75,8 @@ const MediaIndex = ({ user }) => {
             <div id="home-header">
                 <div className="header-text">
                     <h1>Holocron</h1>
-                    <h3>an interactive Star Wars media catalog</h3>
+                    <h3>An interactive Star Wars media catalog</h3>
+                    <p>Track your progress as you explore the galaxy</p>
                 </div>
             </div>
             <div id="search-and-filter">
@@ -85,7 +86,7 @@ const MediaIndex = ({ user }) => {
             <div id="home-media-index" className="grid-x grid-margin-x">
                 {mediaTiles}
             </div>
-            <button className="to-top button" onClick={scrollToTop}>Go To Top</button>
+            <div className="to-top" onClick={scrollToTop}>Go to Top</div>
         </>
     )
 }
