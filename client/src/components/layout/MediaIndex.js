@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { useCollapse } from "react-collapsed"
 
 import MediaTile from "./MediaTile"
 import SearchSection from "./SearchSection"
