@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { useCollapse } from "react-collapsed"
-import '../../assets/scss/main.scss'
 
 const FilterSection = ({media, setFilterResults}) => {
     const { getCollapseProps, getToggleProps } = useCollapse()

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { useCollapse } from "react-collapsed"
-import '../../assets/scss/main.scss'
 
 import searchMedia from "../../services/getSearchResults"
 
