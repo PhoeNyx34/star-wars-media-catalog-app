@@ -24,7 +24,8 @@ const SearchSection = ({media, setSearchResults}) => {
     }
 
     const refreshPage = (event) => {
-        location.href="/"
+        // location.href="/"
+        window.location.assign("/")
     }
 
     return (

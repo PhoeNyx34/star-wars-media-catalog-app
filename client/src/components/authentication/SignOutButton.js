@@ -27,7 +27,8 @@ const SignOutButton = () => {
   }
 
   if (shouldRedirect) {
-    location.href = "/";
+    // location.href = "/";
+    window.location.assign("/")
   }
 
   return (

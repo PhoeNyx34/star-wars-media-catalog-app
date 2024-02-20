@@ -75,7 +75,7 @@ const FilterSection = ({media, setFilterResults}) => {
     }
 
     const refreshPage = (event) => {
-        location.href="/"
+        window.location.assign("/")
     }
 
     const mediaTypes = [...new Set(media.map(media => {
