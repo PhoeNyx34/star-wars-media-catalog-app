@@ -32,7 +32,6 @@ const FilterSection = ({media, setFilterResults}) => {
     const submitFilter = (event) => {
         event.preventDefault()
         cleanFilterInput()
-        console.log(filterParams)
         const filterResults = media.filter(item => {
             const itemEntries = Object.keys(item) 
             const matches = []
