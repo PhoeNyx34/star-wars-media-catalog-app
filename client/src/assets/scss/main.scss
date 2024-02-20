@@ -225,20 +225,7 @@ h1 {
   background-color: #193665;
   color: #F9FEFA;
   font-weight: bold;
-  padding-bottom: 13px;
-}
-
-.collapsible-header {
-  margin-left: 50px;
-  padding-top: 13px;
-  cursor: pointer;
-}
-
-.collapsible-content {
-  padding: 10px 20px;
-  background-color: #193665;
-  box-shadow: 5px 3px 5px rgba(25,54,101,50%);
-  justify-content: space-around;
+  padding: 1rem;
 }
 
 #filter-form {
@@ -254,9 +241,9 @@ h1 {
   }
 }
 
-.search-filter-buttons {
-  margin-top: 50px;
-  justify-content: space-around;
+#search-form {
+  // width: 80%;
+  margin-left: 2rem;
 }
 
 #home-media-index {

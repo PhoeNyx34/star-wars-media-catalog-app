@@ -1,9 +1,6 @@
 import React, { useState } from "react"
-import { useCollapse } from "react-collapsed"
 
 const FilterSection = ({media, setFilterResults}) => {
-    const [isExpanded, setExpanded] = useState(false)
-    const { getCollapseProps, getToggleProps } = useCollapse()
     const [filterParams, setFilterParams] = useState({})
 
     const handleInputChange = (event) => {
@@ -74,10 +71,6 @@ const FilterSection = ({media, setFilterResults}) => {
         }
     }
 
-    // const refreshPage = (event) => {
-    //     window.location.assign("/")
-    // }
-
     const mediaTypes = [...new Set(media.map(media => {
         return media.type
     }))]
@@ -108,15 +101,9 @@ const FilterSection = ({media, setFilterResults}) => {
     })
 
     return (
-        <div className="filter-section">
-            <div className="collapsible-header" 
-                {...getToggleProps({
-                onClick: () => setExpanded((prevExpanded) => !prevExpanded),
-                })}
-            >Filter</div>
-            <div {...getCollapseProps()}>
-                <div className="collapsible-content">
-                    <form id="filter-form" className="grid-x">
+        <div className="grid-x">
+            <button className="cell small-2 button" onClick={submitFilter}>Filter</button>
+            <form id="filter-form" className="grid-x">
                         
                         <div className="cell small-3">
                             <label htmlFor="type">Media Type:</label>
@@ -170,13 +157,6 @@ const FilterSection = ({media, setFilterResults}) => {
                         </div>
 
                     </form>
-
-                    <div className="search-filter-buttons grid-x">
-                        {/* <button className="cell small-2 button" onClick={refreshPage}>Refresh</button> */}
-                        <button className="cell small-2 button" onClick={submitFilter}>Set Filters</button>
-                    </div>
-                </div>
-            </div>
         </div>
     )
 }
