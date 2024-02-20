@@ -23,10 +23,10 @@ const SearchSection = ({media, setSearchResults}) => {
         }
     }
 
-    const refreshPage = (event) => {
-        // location.href="/"
-        window.location.assign("/")
-    }
+    // const refreshPage = (event) => {
+    //     // location.href="/"
+    //     window.location.assign("/")
+    // }
 
     return (
         <div className="search-section">
@@ -40,7 +40,7 @@ const SearchSection = ({media, setSearchResults}) => {
             <div {...getCollapseProps()}>
                 <div className="collapsible-content grid-x">
                     <input type="search" className="cell large-12" placeholder="Enter search query" onChange={handleInputChange}/>
-                    <button className="cell small-2 button" onClick={refreshPage}>Refresh</button>
+                    {/* <button className="cell small-2 button" onClick={refreshPage}>Refresh</button> */}
                     <button className="cell small-2 button" onClick={submitSearch}>Search</button>
                 </div>
             </div>

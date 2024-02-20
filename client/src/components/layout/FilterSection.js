@@ -74,9 +74,9 @@ const FilterSection = ({media, setFilterResults}) => {
         }
     }
 
-    const refreshPage = (event) => {
-        window.location.assign("/")
-    }
+    // const refreshPage = (event) => {
+    //     window.location.assign("/")
+    // }
 
     const mediaTypes = [...new Set(media.map(media => {
         return media.type
@@ -172,7 +172,7 @@ const FilterSection = ({media, setFilterResults}) => {
                     </form>
 
                     <div className="search-filter-buttons grid-x">
-                        <button className="cell small-2 button" onClick={refreshPage}>Refresh</button>
+                        {/* <button className="cell small-2 button" onClick={refreshPage}>Refresh</button> */}
                         <button className="cell small-2 button" onClick={submitFilter}>Set Filters</button>
                     </div>
                 </div>
