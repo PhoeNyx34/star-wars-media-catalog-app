@@ -1,11 +1,8 @@
 import React, { useState } from "react"
-import { useCollapse } from "react-collapsed"
 
 import searchMedia from "../../services/getSearchResults"
 
 const SearchSection = ({media, setSearchResults}) => {
-    const [isExpanded, setExpanded] = useState(false)
-    const { getCollapseProps, getToggleProps } = useCollapse({isExpanded})
     const [searchQuery, setSearchQuery] = useState('')
 
     const handleInputChange = (event) => {
@@ -23,27 +20,10 @@ const SearchSection = ({media, setSearchResults}) => {
         }
     }
 
-    const refreshPage = (event) => {
-        // location.href="/"
-        window.location.assign("https://holocron-catalog-602bc8c82273.herokuapp.com/")
-    }
-
     return (
-        <div className="search-section">
-            <div className="collapsible-header" 
-                {...getToggleProps({
-                    onClick: () => setExpanded((prevExpanded) => 
-                    !prevExpanded),})}
-            >
-                Search
-            </div>
-            <div {...getCollapseProps()}>
-                <div className="collapsible-content grid-x">
-                    <input type="search" className="cell large-12" placeholder="Enter search query" onChange={handleInputChange}/>
-                    <button className="cell small-2 button" onClick={refreshPage}>Refresh</button>
-                    <button className="cell small-2 button" onClick={submitSearch}>Search</button>
-                </div>
-            </div>
+        <div className="grid-x">
+            <button className="cell large-2 button" onClick={submitSearch}>Search</button>
+            <input id="search-form" type="search" className="cell large-9" placeholder="Enter search query" onChange={handleInputChange}/>
         </div>
     )
 }
