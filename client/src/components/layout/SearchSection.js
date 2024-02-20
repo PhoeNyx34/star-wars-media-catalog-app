@@ -31,7 +31,7 @@ const SearchSection = ({media, setSearchResults}) => {
         <div className="search-section">
             <div className="collapsible-header" 
                 {...getToggleProps({
-                    onclick: () => setExpanded((prevExpanded) => 
+                    onClick: () => setExpanded((prevExpanded) => 
                     !prevExpanded),})}
             >
                 Search
