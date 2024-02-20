@@ -12,8 +12,8 @@ const AccountPage = ({ user }) => {
     const [wantedMedia, setWantedMedia] = useState([])
 
 
-    const[isExpanded, setExpanded] = useState(true)
-    const { getCollapseProps, getToggleProps } = useCollapse(isExpanded)
+    // const [isExpanded, setExpanded] = useState(true)
+    // const { getCollapseProps, getToggleProps } = useCollapse(isExpanded)
 
     const getUserMedia = async () => {
         try {

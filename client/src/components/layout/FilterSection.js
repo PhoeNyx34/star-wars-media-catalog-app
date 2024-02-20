@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useCollapse } from "react-collapsed"
 
 const FilterSection = ({media, setFilterResults}) => {
+    const [isExpanded, setExpanded] = useState(false)
     const { getCollapseProps, getToggleProps } = useCollapse()
     const [filterParams, setFilterParams] = useState({})
 
@@ -108,7 +109,11 @@ const FilterSection = ({media, setFilterResults}) => {
 
     return (
         <div className="filter-section">
-            <div className="collapsible-header" {...getToggleProps()}>Filter</div>
+            <div className="collapsible-header" 
+                {...getToggleProps({
+                onClick: () => setExpanded((prevExpanded) => !prevExpanded),
+                })}
+            >Filter</div>
             <div {...getCollapseProps()}>
                 <div className="collapsible-content">
                     <form id="filter-form" className="grid-x">

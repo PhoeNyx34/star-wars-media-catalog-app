@@ -4,7 +4,8 @@ import { useCollapse } from "react-collapsed"
 import searchMedia from "../../services/getSearchResults"
 
 const SearchSection = ({media, setSearchResults}) => {
-    const { getCollapseProps, getToggleProps } = useCollapse()
+    const [isExpanded, setExpanded] = useState(false)
+    const { getCollapseProps, getToggleProps } = useCollapse({isExpanded})
     const [searchQuery, setSearchQuery] = useState('')
 
     const handleInputChange = (event) => {
@@ -28,7 +29,13 @@ const SearchSection = ({media, setSearchResults}) => {
 
     return (
         <div className="search-section">
-            <div className="collapsible-header" {...getToggleProps()}>Search</div>
+            <div className="collapsible-header" 
+                {...getToggleProps({
+                    onclick: () => setExpanded((prevExpanded) => 
+                    !prevExpanded),})}
+            >
+                Search
+            </div>
             <div {...getCollapseProps()}>
                 <div className="collapsible-content grid-x">
                     <input type="search" className="cell large-12" placeholder="Enter search query" onChange={handleInputChange}/>
