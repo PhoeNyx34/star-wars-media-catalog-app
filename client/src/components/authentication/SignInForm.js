@@ -80,7 +80,7 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="grid-container form-page" onSubmit={onSubmit}>
+    <div className="grid-container single-column-form" onSubmit={onSubmit}>
       <h1>Sign In</h1>
       <ErrorList errors={serverErrors} />
       <form>

@@ -434,7 +434,28 @@ h1 {
   font-weight: bold;
 }
 
-.form-page {
+.two-column-form {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  color: #193665;
+  
+  h1 {
+    font-size: 5rem;
+    text-align: center;
+    padding: 50px 0px 75px 0px;
+  }
+
+  input {
+    margin-left: 5px;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+}
+
+.single-column-form {
   width: 79%;
   max-width: 700px;
   margin: auto;
@@ -644,7 +665,7 @@ legend, label {
     }
   }
 
-  .form-page {
+  .single-column-form {
     width: 85%;
 
     h1 {
@@ -731,7 +752,7 @@ legend, label {
     }
   }
 
-  .form-page {
+  .single-column-form {
     h1 {
       font-size: 2rem;
     }
