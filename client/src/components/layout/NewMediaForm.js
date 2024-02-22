@@ -16,7 +16,6 @@ const NewMediaForm = ({ user }) => {
         )
     }
 
-    const [shouldRedirect, setShouldRedirect] = useState(false)
     const [serverErrors, setServerErrors] = useState([])
     const [newMedia, setNewMedia] = useState({
         type: "",
@@ -30,6 +29,10 @@ const NewMediaForm = ({ user }) => {
         animated: "",
         lego: "false",
         rating: ""
+    })
+    const [newContributor, setNewContributor] = useState({
+        contributorName: "",
+        contributorRole: ""
     })
 
     const persistNewMedia = async () => {
@@ -63,11 +66,42 @@ const NewMediaForm = ({ user }) => {
         })
     }
 
+    // function to handle contributors
+    // takes in contributor-name and contributor-role and saves as object
+        // HARD: how to save multiple objects to newMedia.contributors array?
+    // update newMedia state to include contributors object
+
+    // ON BACKEND:
+    // if contributor-name exists in contributors table, get contributor id
+    // else create contributor
+    // create data in behindSceneRoles table that includes contributor id, media id, and role
+
+    const handleInputObject = (event) => {
+        setNewContributor({...newContributor,
+            [event.currentTarget.name]: event.currentTarget.value
+        })
+    }
+
+    const contributors = []
+    const contributorsList = contributors.map(contributor => {
+        return (<li>{contributorName}, {contributorRole}</li>)
+    })
+    const addContributor = (event) => {
+        event.preventDefault()
+        contributors.push(newContributor)
+        setNewContributor({
+            contributorName: "",
+            contributorRole: ""
+        })
+        console.log(contributors)
+    }
+
     const clearForm = (event) => {
         setNewMedia({
             type: "",
             title: "",
             release_date: "",
+            contributor: [],
             cover_image: "",
             description: "",
             fictional_year_start: "",
@@ -119,6 +153,24 @@ const NewMediaForm = ({ user }) => {
                         <input type="text" name="rating" value={newMedia.rating} onChange={handleInputChange} />
                     </label>
                 </div>
+                
+                {/* fieldset for contributors category */}
+                <fieldset className="grid-x">
+                    <label className="cell large-12"><span className="required">*</span>Contributor(s):</label>
+                    {/* two inputs: one for name, one for role */}
+                    <div className="grid-x">
+                        <label className="cell small-4">
+                            Name:
+                            <input type="text" name="contributorName" value={newContributor.contributorName} onChange={handleInputObject}></input>
+                        </label>
+                        <label className="cell small-4">
+                            Role:
+                            <input type="text" name="contributorRole" value={newContributor.contributorRole} onChange={handleInputObject}></input>
+                        </label>
+                        <button className="button cell small-4" onClick={addContributor}>Add contributor</button>
+                    </div>
+                </fieldset>
+
                 <label>
                     Cover Image:
                     <input type="text" name="cover_image" value={newMedia.cover_image} onChange={handleInputChange} />
