@@ -5,6 +5,7 @@ import UserSeeder from "./seeders/UserSeeder.js"
 import FilmSeeder from "./seeders/FilmSeeder.js"
 import ContributorSeeder from "./seeders/ContributorSeeder.js"
 import BehindSceneRoleSeeder from "./seeders/BehindSceneRoleSeeder.js"
+import EraSeeder from "./seeders/EraSeeder.js"
 
 class Seeder {
   static async seed() {
@@ -19,6 +20,9 @@ class Seeder {
 
     console.log("Seeding behind the scenes roles...")
     await BehindSceneRoleSeeder.seed()
+
+    console.log("Seeding eras...")
+    await EraSeeder.seed()
 
     console.log("Done!")
     await connection.destroy()
