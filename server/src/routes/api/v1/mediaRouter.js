@@ -53,7 +53,11 @@ mediaRouter.post("/", async (req,res) => {
     try {
         const persistedMedia = await Media.query().insertAndFetch(newMedia)
         // check + create contributors
+            //for each contributor, check if contributorName already exists in Contributor
+            // if yes, fetch; else, insertAndFetch
+            // add contributorId as key/value to contributor object
         // link to persistedMedia.id
+            // for each contributor, insert into BehindSceneRole relation between contributor,media
         return res.status(201).json({ persistedMediaId: persistedMedia.id })
     } catch (error) {
         if (error instanceof ValidationError) {
