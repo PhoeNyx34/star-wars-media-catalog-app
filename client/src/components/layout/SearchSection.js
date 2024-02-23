@@ -22,8 +22,8 @@ const SearchSection = ({media, setSearchResults}) => {
 
     return (
         <div className="grid-x">
+            <input id="search-form" type="search" className="cell large-12" placeholder="Enter search query" onChange={handleInputChange}/>
             <button className="cell large-2 button" onClick={submitSearch}>Search</button>
-            <input id="search-form" type="search" className="cell large-9" placeholder="Enter search query" onChange={handleInputChange}/>
         </div>
     )
 }

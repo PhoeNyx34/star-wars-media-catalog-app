@@ -37,7 +37,7 @@ const MediaIndex = ({ user }) => {
     }
 
     let mediaTiles
-    if (searchResults.length > 0) {
+    if (searchResults.length > 0 && searchResults.length < media.length) {
         mediaTiles = searchResults.map(item => {
             return (
                 <MediaTile 
@@ -47,7 +47,7 @@ const MediaIndex = ({ user }) => {
                 />
             )
         })
-    } else if (filterResults.length > 0) {
+    } else if (filterResults.length > 0 && filterResults.length < media.length) {
         mediaTiles = filterResults.map(item => {
             return (
                 <MediaTile 
@@ -71,6 +71,20 @@ const MediaIndex = ({ user }) => {
 
     return (
         <>
+            <section id="search">
+                <input id="search-toggle" type="checkbox" />
+                <label className="search-button-container" htmlFor="search-toggle">Search</label>
+                <div className="search-content">
+                    <SearchSection media={media} setSearchResults={setSearchResults} />
+                </div>
+            </section>
+            <section id="filter">
+                <input id="filter-toggle" type="checkbox" />
+                <label className="filter-button-container" htmlFor="filter-toggle">Filter</label>
+                <div className="filter-content">
+                    <FilterSection media={media} setFilterResults={setFilterResults} />
+                </div>
+            </section>
             <div id="home-header">
                 <div className="header-text">
                     <h1>Holocron</h1>
@@ -78,10 +92,10 @@ const MediaIndex = ({ user }) => {
                     <p>Track your progress as you explore the galaxy</p>
                 </div>
             </div>
-            <div id="search-and-filter">
+            {/* <div id="search-and-filter">
                 <SearchSection media={media} setSearchResults={setSearchResults} />
                 <FilterSection media={media} setFilterResults={setFilterResults} />
-            </div>
+            </div> */}
             <div id="home-media-index" className="grid-x grid-margin-x">
                 {mediaTiles}
             </div>

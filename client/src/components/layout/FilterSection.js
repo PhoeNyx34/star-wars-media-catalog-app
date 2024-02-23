@@ -101,62 +101,61 @@ const FilterSection = ({media, setFilterResults}) => {
     })
 
     return (
-        <div className="grid-x">
-            <button className="cell small-2 button" onClick={submitFilter}>Filter</button>
+        <div>
             <form id="filter-form" className="grid-x">
-                        
-                        <div className="cell small-3">
-                            <label htmlFor="type">Media Type:</label>
-                            <select id="type" name="type" onChange={handleInputChange}>
-                                <option>-- Please select an option --</option>
-                                {typeOptions}
-                            </select>
-                        </div>
+                
+                <div className="cell large-6">
+                    <label htmlFor="type">Media Type:</label>
+                    <select id="type" name="type" onChange={handleInputChange}>
+                        <option>-- Please select an option --</option>
+                        {typeOptions}
+                    </select>
+                </div>
 
-                        <div className="cell small-3">
-                            <label htmlFor="animated">Film Style:</label>
-                            <select id="animated" name="animated" onChange={handleInputChange}>
-                                <option>-- Please select an option --</option>
-                                <option key="false" value={false}>live-action</option>
-                                <option key="true" value={true}>animated</option>
-                                <option key="lego" value="lego">lego</option>
-                            </select>
-                        </div>
+                <div className="cell large-6">
+                    <label htmlFor="animated">Film Style:</label>
+                    <select id="animated" name="animated" onChange={handleInputChange}>
+                        <option>-- Please select an option --</option>
+                        <option key="false" value={false}>live-action</option>
+                        <option key="true" value={true}>animated</option>
+                        <option key="lego" value="lego">lego</option>
+                    </select>
+                </div>
 
-                        <div className="cell small-3">
-                            <label htmlFor="rating">Audience Rating:</label>
-                            <select id="rating" name="rating" onChange={handleInputChange}>
-                                <option>-- Please select an option --</option>
-                                {ratingOptions}
-                            </select>
-                        </div>
+                <div className="cell large-6">
+                    <label htmlFor="rating">Audience Rating:</label>
+                    <select id="rating" name="rating" onChange={handleInputChange}>
+                        <option>-- Please select an option --</option>
+                        {ratingOptions}
+                    </select>
+                </div>
 
-                        <div className="cell small-3">
-                            <label htmlFor="rating">Star Wars Universe:</label>
-                            <select id="canon" name="canon" onChange={handleInputChange}>
-                                <option>-- Please select an option --</option>
-                                <option key="true" value={true}>canon</option>
-                                <option key="false" value={false}>extended universe</option>
-                            </select>
-                        </div>
+                <div className="cell large-6">
+                    <label htmlFor="rating">Star Wars Universe:</label>
+                    <select id="canon" name="canon" onChange={handleInputChange}>
+                        <option>-- Please select an option --</option>
+                        <option key="true" value={true}>canon</option>
+                        <option key="false" value={false}>extended universe</option>
+                    </select>
+                </div>
 
-                        <div className="cell small-3">
-                            <label htmlFor="era">Star Wars Era:</label>
-                            <select id="era" name="era" onChange={handleInputChange}>
-                                <option>-- Please select an option --</option>
-                                {eraOptions}
-                            </select>
-                        </div>
+                <div className="cell large-6">
+                    <label htmlFor="era">Star Wars Era:</label>
+                    <select id="era" name="era" onChange={handleInputChange}>
+                        <option>-- Please select an option --</option>
+                        {eraOptions}
+                    </select>
+                </div>
 
-                        <div className="cell small-3">
-                            <label htmlFor="contributors">Primary Contributors:</label>
-                            <select id="contributors" name="behindSceneRoles" onChange={handleInputChange}>
-                                <option>-- Please select an option --</option>
-                                {contributorOptions}
-                            </select>
-                        </div>
-
-                    </form>
+                <div className="cell large-6">
+                    <label htmlFor="contributors">Primary Contributors:</label>
+                    <select id="contributors" name="behindSceneRoles" onChange={handleInputChange}>
+                        <option>-- Please select an option --</option>
+                        {contributorOptions}
+                    </select>
+                </div>
+            </form>
+            <button className="button" onClick={submitFilter}>Filter</button>
         </div>
     )
 }

@@ -26,9 +26,9 @@ const TopBar = ({ user }) => {
   return (
     <>
       <section className="top-nav">
-          <div className="menu-title">Holocron</div>
-          <input id="menu-toggle" type="checkbox" />
-          <label className='menu-button-container' htmlFor="menu-toggle">
+        <div className="menu-title">Holocron</div>
+        <input id="menu-toggle" type="checkbox" />
+        <label className='menu-button-container' htmlFor="menu-toggle">
           <div className='menu-button'></div>
         </label>
         <ul className="menu">
@@ -41,7 +41,6 @@ const TopBar = ({ user }) => {
           {user ? authenticatedListItems : unauthenticatedListItems}
         </ul>
       </section>
-
     </>
   );
 };
