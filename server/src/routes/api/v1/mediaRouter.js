@@ -47,9 +47,13 @@ mediaRouter.get("/:id", async (req, res) => {
 
 mediaRouter.post("/", async (req,res) => {
     const formInput = req.body
-    const newMedia = cleanUserInput(formInput)
+    const newMedia = cleanUserInput(formInput.newMedia)
+    const contributors = cleanUserInput(formInput.contributors)
+
     try {
         const persistedMedia = await Media.query().insertAndFetch(newMedia)
+        // check + create contributors
+        // link to persistedMedia.id
         return res.status(201).json({ persistedMediaId: persistedMedia.id })
     } catch (error) {
         if (error instanceof ValidationError) {

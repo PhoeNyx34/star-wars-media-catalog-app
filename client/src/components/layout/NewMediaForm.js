@@ -36,7 +36,7 @@ const NewMediaForm = ({ user }) => {
             const response = await fetch(`/api/v1/media`, {
                 method: 'POST',
                 headers: new Headers({"Content-Type":"application/json"}),
-                body: JSON.stringify(newMedia)
+                body: JSON.stringify({newMedia,contributors})
             })
             if (!response.ok) {
                 if (response.status === 422) {
@@ -63,7 +63,7 @@ const NewMediaForm = ({ user }) => {
     }
 
     // ON BACKEND:
-    // if contributor-name exists in contributors table, get contributor id
+    // if contributorName exists in contributors table, get contributor id
     // else create contributor
     // create data in behindSceneRoles table that includes contributor id, media id, and role
     const [newContributor, setNewContributor] = useState({
@@ -113,8 +113,7 @@ const NewMediaForm = ({ user }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        newMedia.contributors = contributors
-        //persistNewMedia()
+        persistNewMedia()
     } 
 
     return (
