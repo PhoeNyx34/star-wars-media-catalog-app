@@ -131,7 +131,7 @@ const FilterSection = ({media, setFilterResults}) => {
                 </div>
 
                 <div className="cell large-6">
-                    <label htmlFor="rating">Star Wars Universe:</label>
+                    <label htmlFor="rating">Universe:</label>
                     <select id="canon" name="canon" onChange={handleInputChange}>
                         <option>-- Please select an option --</option>
                         <option key="true" value={true}>canon</option>
@@ -140,7 +140,7 @@ const FilterSection = ({media, setFilterResults}) => {
                 </div>
 
                 <div className="cell large-6">
-                    <label htmlFor="era">Star Wars Era:</label>
+                    <label htmlFor="era">Era:</label>
                     <select id="era" name="era" onChange={handleInputChange}>
                         <option>-- Please select an option --</option>
                         {eraOptions}
@@ -148,7 +148,7 @@ const FilterSection = ({media, setFilterResults}) => {
                 </div>
 
                 <div className="cell large-6">
-                    <label htmlFor="contributors">Primary Contributors:</label>
+                    <label htmlFor="contributors">Contributors:</label>
                     <select id="contributors" name="behindSceneRoles" onChange={handleInputChange}>
                         <option>-- Please select an option --</option>
                         {contributorOptions}

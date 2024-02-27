@@ -221,14 +221,19 @@ h1 {
 
 #search {
   position: fixed;
-  top: 40%;
+  top: 7%;
   left: 1rem;
+  width: 75%;
+  max-width: 500px;
 }
 
 #filter {
   position: fixed;
-  top: 40%;
+  top: 7%;
   right: 1rem;
+  width: 75%;
+  max-width: 500px;
+  overflow: scroll;
 }
 
 #search-toggle, #filter-toggle {
@@ -256,8 +261,7 @@ h1 {
 }
 
 .search-content, .filter-content {
-  visibility: hidden;
-  width: 500px;
+  visibility: collapse;
   background-color: #F9C747;
   color: #071018;
   border-radius: 5px;
@@ -266,8 +270,7 @@ h1 {
 }
 
 #search-toggle:checked ~ .search-content {
-  visibility: visible;
-
+    visibility: visible;
 }
 
 #filter-toggle:checked ~ .filter-content {
@@ -767,9 +770,15 @@ legend, label {
 }
 
 @media screen and (max-width: 280px) {
-  #search-and-filter {
-    .button {
-      font-size: 0.6rem;
+  .search-content, .filter-content {
+    label {
+      font-size: small;
+    }
+    select {
+      font-size: small;
+    }
+    input {
+      font-size: small;
     }
   }
 

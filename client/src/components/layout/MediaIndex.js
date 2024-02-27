@@ -92,10 +92,6 @@ const MediaIndex = ({ user }) => {
                     <p>Track your progress as you explore the galaxy</p>
                 </div>
             </div>
-            {/* <div id="search-and-filter">
-                <SearchSection media={media} setSearchResults={setSearchResults} />
-                <FilterSection media={media} setFilterResults={setFilterResults} />
-            </div> */}
             <div id="home-media-index" className="grid-x grid-margin-x">
                 {mediaTiles}
             </div>
